@@ -43,6 +43,31 @@ p {
     width: 90%;
 }
 
+nav {
+    width: 150px;
+    padding: 1rem;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.nav-list li, a {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
 .formInicio {
     width: 25rem;
     background-color: #acbfd1;
