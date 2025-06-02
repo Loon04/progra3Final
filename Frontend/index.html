@@ -15,21 +15,32 @@
 
 <body>
     <!-- Seccion del header donde tenemos el logo el titulo y la navegacion basica -->
-    <header class="header-container">
-        <div class="logo">
-            <img src="./img/logo.png" alt="logo">
-        </div>
+    <div class="container-sm d-flex flex-column justify-content-center align-items-center vh-100">
 
-        <div class="titulo">
-            <h1>TecStore</h1>
-        </div>
-        <nav>
-            navbar
-        </nav>
-    </header>
+        <form class="rounded p-5 formInicio" id="formInicio">
+            <div class="d-flex justify-content-center align-items-center p-t-3 mb-5">
+                <div class="imgIndex center">
+                    <img src="./img/logo.png" alt="logo">
+                </div>
+            </div>
+
+            <h1 class="text-center p-3 bg-white rounded">TecStore</h1>
+            <div>
+                <h4>Ingresa tu nombre</h4>
+            </div>
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="usuario">
+            </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

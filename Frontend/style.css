@@ -42,3 +42,16 @@ p {
 .logo img {
     width: 90%;
 }
+
+.formInicio {
+    width: 25rem;
+    background-color: #acbfd1;
+}
+
+.imgIndex {
+    width: 150px;
+}
+
+.imgIndex img {
+    width: 100%;
+}
