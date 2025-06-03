@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cargador Rápido USB-C 25W",
+        "descripcion": "Cargador compatible con carga rápida para dispositivos Samsung y Android.",
+        "precio": 4999.99,
+        "stock": 15,
+        "imagen": "../../img/logo.png",
+        "tipo": "Accesorio",
+        "activo": true
+    },
+    {
+        "id": 2,
+        "nombre": "Auriculares Bluetooth Inalámbricos",
+        "descripcion": "Auriculares estéreo con micrófono y estuche de carga.",
+        "precio": 7999.00,
+        "stock": 10,
+        "imagen": "../../img/logo.png",
+        "tipo": "Accesorio",
+        "activo": true
+    },
+    {
+        "id": 3,
+        "nombre": "Protector de Pantalla Vidrio Templado",
+        "descripcion": "Vidrio templado 9H anti-rayaduras para iPhone 13.",
+        "precio": 1500.00,
+        "stock": 30,
+        "imagen": "../../img/logo.png",
+        "tipo": "Accesorio",
+        "activo": true
+    },
+    {
+        "id": 4,
+        "nombre": "Soporte para Auto con Ventosa",
+        "descripcion": "Soporte universal para móviles con rotación 360°.",
+        "precio": 2999.00,
+        "stock": 12,
+        "imagen": "../../img/logo.png",
+        "tipo": "Accesorio",
+        "activo": false
+    },
+    {
+        "id": 5,
+        "nombre": "Funda Silicona Samsung A32",
+        "descripcion": "Funda protectora antishock para Samsung Galaxy A32.",
+        "precio": 1899.00,
+        "stock": 20,
+        "imagen": "../../img/logo.png",
+        "tipo": "Accesorio",
+        "activo": true
+    },
+    {
+        "id": 6,
+        "nombre": "Pantalla Repuesto iPhone X",
+        "descripcion": "Pantalla LCD + táctil para iPhone X, repuesto de alta calidad.",
+        "precio": 22999.00,
+        "stock": 5,
+        "imagen": "../../img/logo.png",
+        "tipo": "Repuesto",
+        "activo": true
+    },
+    {
+        "id": 7,
+        "nombre": "Batería Interna Samsung J7",
+        "descripcion": "Batería original para Samsung Galaxy J7 3000mAh.",
+        "precio": 6999.00,
+        "stock": 8,
+        "imagen": "../../img/logo.png",
+        "tipo": "Repuesto",
+        "activo": true
+    },
+    {
+        "id": 8,
+        "nombre": "Cámara Trasera Moto G6",
+        "descripcion": "Repuesto de cámara principal compatible con Moto G6.",
+        "precio": 4999.00,
+        "stock": 6,
+        "imagen": "../../img/logo.png",
+        "tipo": "Repuesto",
+        "activo": false
+    },
+    {
+        "id": 9,
+        "nombre": "Flex de carga Xiaomi Redmi Note 8",
+        "descripcion": "Módulo de carga USB tipo C para Redmi Note 8.",
+        "precio": 2599.00,
+        "stock": 10,
+        "imagen": "../../img/logo.png",
+        "tipo": "Repuesto",
+        "activo": true
+    },
+    {
+        "id": 10,
+        "nombre": "Micrófono Interno Huawei P30",
+        "descripcion": "Repuesto de micrófono compatible con Huawei P30.",
+        "precio": 3499.00,
+        "stock": 4,
+        "imagen": "../../img/logo.png",
+        "tipo": "Repuesto",
+        "activo": true
+    }
+]

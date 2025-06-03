@@ -1,5 +1,6 @@
 
 function obtenerUsuarioYcargar() {
+    const usuario = localStorage.getItem("usuario");
     const formInicio = document.getElementById("formInicio")
 
     formInicio.addEventListener("submit", (e) => {
@@ -9,7 +10,7 @@ function obtenerUsuarioYcargar() {
             return
         }
         localStorage.setItem("usuario", usuario);
-        window.location.href = "./pages/Inicio.html"
+        window.location.href = "./pages/Inicio/Inicio.html"
     })
 }
 
