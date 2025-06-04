@@ -1,4 +1,4 @@
-localStorage.removeItem('carrito'); //POR AHORA
+// localStorage.removeItem('carrito'); //POR AHORA
 
 async function ejecutarInicio() {
     const usuario = localStorage.getItem("usuario");
