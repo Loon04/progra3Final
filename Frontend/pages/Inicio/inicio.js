@@ -11,7 +11,7 @@ async function ejecutarInicio() {
 }
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []; //aca esta el get
-carrito = carrito.map((el) => ({ ...el, cantidad: 0 }))
+
 async function cargarProductos() {
 
     const request = await fetch("../../db/test-productos.json");
