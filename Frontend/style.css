@@ -111,19 +111,3 @@ a {
 .section-product {
     margin-bottom: 6rem;
 }
-
-.section-cart {
-    width: 95%;
-    border-radius: 5px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.precio-total {
-    padding-top: 10px;
-}
-
-.cart-total p {
-    display: flex;
-    justify-content: space-between;
-}

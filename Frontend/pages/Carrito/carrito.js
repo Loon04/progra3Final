@@ -3,6 +3,7 @@ function iniciarCarrito() {
     const carritoStorage = localStorage.getItem("carrito");
     let carrito = JSON.parse(carritoStorage);
     renderizarProductosCarrito(carrito);
+    finalizarCompra();
 }
 
 function renderizarProductosCarrito(carrito) {
@@ -91,6 +92,17 @@ function restarCantidad(producto, carrito) {
     console.log(carrito);
     save(carrito)
     renderizarProductosCarrito(carrito)
+}
+
+function finalizarCompra(){
+    const btnFinalizarCompra = document.querySelector('.finalizar-compra')
+    btnFinalizarCompra.addEventListener('click',() =>{
+
+        setTimeout(() => {
+            window.location.href = "../Ticket/ticket.html";
+            //console.log("Ruta actual:", location.href);
+        }, 1000);
+    });
 }
 
 iniciarCarrito();

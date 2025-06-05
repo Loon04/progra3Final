@@ -5,3 +5,18 @@
 .imgCarrito img {
     width: 100%;
 }
+
+.section-cart {
+    width: 95%;
+    border-radius: 5px;
+    padding: 1rem 0;
+}
+
+.precio-total {
+    padding-top: 10px;
+}
+
+.cart-total p {
+    display: flex;
+    justify-content: space-between;
+}
