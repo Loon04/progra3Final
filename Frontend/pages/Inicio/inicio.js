@@ -11,11 +11,12 @@ async function ejecutarInicio() {
 }
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []; //aca esta el get
-
+carrito = carrito.map((el) => ({ ...el, cantidad: 0 }))
 async function cargarProductos() {
 
     const request = await fetch("../../db/test-productos.json");
-    const data = await request.json();
+    let data = await request.json();
+    data = await data.map((el) => ({ ...el, cantidad: 0 }))
 
     let renderProduct = 3;
     const pagData = data.slice(0, 3);
@@ -36,7 +37,14 @@ function seleccion(container, selector) {
 
 function actualizarCarrito(container, selector, producto) {
     seleccion(container, selector).addEventListener('click', () => {
-        carrito.push(producto)
+
+        const elemento = carrito.find(el => el.id == producto.id);
+        if (elemento) {
+            elemento.cantidad++;
+        } else {
+            carrito.push({ ...producto, cantidad: 1 })
+        }
+
         console.log(carrito);
         save()
     })

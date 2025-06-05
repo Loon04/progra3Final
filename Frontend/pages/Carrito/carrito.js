@@ -2,7 +2,6 @@ function iniciarCarrito() {
 
     const carritoStorage = localStorage.getItem("carrito");
     let carrito = JSON.parse(carritoStorage);
-
     renderizarProductosCarrito(carrito);
 }
 
@@ -16,6 +15,7 @@ function renderizarProductosCarrito(carrito) {
         const div = document.createElement("div");
         const nombre = document.createElement("p");
         const precio = document.createElement("p");
+
         nombre.innerText = element.nombre;
         precio.innerText = "$" + element.precio;
         const img = document.createElement("img");
@@ -23,20 +23,35 @@ function renderizarProductosCarrito(carrito) {
         img.className = "imgCarrito";
 
         const deleteBtn = document.createElement("button");
-        deleteBtn.className = "delete-button-product  btn btn-primary";
-        deleteBtn.innerText = "Eliminar";
-        suma += element.precio;
+        deleteBtn.className = "delete-button-product  btn btn-danger";
+        deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`
+        const cantidad = document.createElement("div");
+        cantidad.innerText = "cantidad: " + element.cantidad;
+        const btnSumCantidad = document.createElement("button");
+        btnSumCantidad.innerText = "+";
+        btnSumCantidad.className = "btn btn-secondary m-2"
+        btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito))
+        const btnRestCantidad = document.createElement("button");
+        btnRestCantidad.innerText = "-";
+        btnRestCantidad.className = "btn btn-secondary m-2"
+        btnRestCantidad.addEventListener("click", () => restarCantidad(element, carrito))
+        cantidad.appendChild(btnSumCantidad);
+        cantidad.appendChild(btnRestCantidad);
+        cantidad.appendChild(deleteBtn);
+
+        suma += element.precio * element.cantidad;
+
         div.appendChild(nombre);
         div.appendChild(img);
         div.appendChild(precio);
-        div.appendChild(deleteBtn);
-        
+        div.appendChild(cantidad);
+
         contenedorProductos.appendChild(div);
 
-        actualizarCarritoBorrar(div,'.delete-button-product',element,carrito)
+        actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
     })
     totalPrice.innerText = "";
-    totalPrice.innerText = "$" + suma;
+    totalPrice.innerText = "$" + suma.toFixed(2);
 
 }
 
@@ -57,12 +72,23 @@ function save(carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito)); //aca esta el set
 }
 
-function actualizarCarritoBorrar(container, selector, producto,carrito) {
+function actualizarCarritoBorrar(container, selector, producto, carrito) {
     seleccion(container, selector).addEventListener('click', () => {
-        EliminarProducto(carrito,producto)
+        EliminarProducto(carrito, producto)
         renderizarProductosCarrito(carrito);
         save(carrito)
     })
+}
+
+function sumarCantidad(producto, carrito) {
+    if (producto.cantidad < 5) producto.cantidad++; // Luego cambiamos depende el stock del admin
+    console.log(carrito);
+    renderizarProductosCarrito(carrito)
+}
+function restarCantidad(producto, carrito) {
+    if (producto.cantidad > 1) producto.cantidad--;
+    console.log(carrito);
+    renderizarProductosCarrito(carrito)
 }
 
 iniciarCarrito();
