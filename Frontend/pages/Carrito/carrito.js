@@ -83,11 +83,13 @@ function actualizarCarritoBorrar(container, selector, producto, carrito) {
 function sumarCantidad(producto, carrito) {
     if (producto.cantidad < 5) producto.cantidad++; // Luego cambiamos depende el stock del admin
     console.log(carrito);
+    save(carrito)
     renderizarProductosCarrito(carrito)
 }
 function restarCantidad(producto, carrito) {
     if (producto.cantidad > 1) producto.cantidad--;
     console.log(carrito);
+    save(carrito)
     renderizarProductosCarrito(carrito)
 }
 
