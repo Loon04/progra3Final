@@ -182,7 +182,7 @@ a {
     }
 }
 
-@media(max-width:400px) {
+@media(max-width:500px) {
     .filter-section {
         flex-direction: row;
         gap: 1rem;
