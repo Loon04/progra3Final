@@ -184,6 +184,7 @@ a {
 
 @media(max-width:500px) {
     .filter-section {
+        width: 100%;
         flex-direction: row;
         gap: 1rem;
         padding: 1rem;
