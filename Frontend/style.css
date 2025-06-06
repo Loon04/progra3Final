@@ -140,6 +140,48 @@ a {
     color: #1b4fa0;
 }
 
+.product-container.fade {
+    animation: fadeIn 0.5s forwards;
+}
+
+.btn,
+.btn-primary {
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active,
+.btn-primary:active {
+    transform: scale(0.96);
+    filter: brightness(0.93);
+}
+
+.page-link:hover,
+.page-link:focus {
+    background: #e3eefd;
+    color: #1b4fa0;
+    border-color: #2d6cdf;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+}
+
+.page-link:active {
+    background: #d0e6ff;
+    color: #174080;
+    transform: scale(0.97);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
 @media(max-width:400px) {
     .filter-section {
         flex-direction: row;

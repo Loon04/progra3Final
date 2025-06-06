@@ -92,6 +92,11 @@ function renderizarProductos(data) {
     const fragment = document.createDocumentFragment();
 
     productContainer.innerHTML = "";
+    //aca la sacamos si ya esta agregada 
+    productContainer.classList.remove('fade');
+    // Agregamos esta linea para reiniciar las animaciones 
+    void productContainer.offsetWidth;
+    productContainer.classList.add('fade');
     data.forEach(element => {
 
         const productDiv = document.createElement('div');
