@@ -18,13 +18,7 @@ async function cargarProductos() {
     let data = await request.json();
     data = await data.map((el) => ({ ...el, cantidad: 0 }))
 
-    let renderProduct = 3;
-    const pagData = data.slice(0, 3);
-
-    renderizarProductos(pagData);
-
-
-    paginator(data, renderProduct);
+    funcionFiltro(data);
 
 }
 
@@ -56,6 +50,7 @@ function save() {
 
 function paginator(data, productosRenderizar) {
     const pagContainer = document.getElementById("pag-container");
+    pagContainer.innerHTML = "";
     pagContainer.innerHTML += `
         <nav aria-label="Page navigation example" style=width:17rem>
             <p>Pagina:</p>
@@ -119,6 +114,37 @@ function renderizarProductos(data) {
     productContainer.appendChild(fragment);
 }
 
+//funcion filtro donde llegan los datos y distribuimos dependiendo si elusuario filtra o no
+function funcionFiltro(data) {
+    const filtros = document.getElementsByClassName("filtro");
+    let dataAccesorios = [];
+    let dataRepuestos = [];
+    //definimos cantidad de elementos a renderizar para usar el paginador
+    const renderProduct = 3;
+
+    //llamamos a la funcion que renderiza productos( por primera vez al iniciar la pagina)
+    renderizarProductos(data.slice(0, renderProduct));
+    //llamamos al paginador para que ejecute la logica
+    paginator(data, renderProduct);
+
+    //manejamos filtros dependiendo de que necesite el usuario.
+    filtros[0].addEventListener("click", () => {
+        //cada vez que el usuario seleccione un tipo de filtro todo el proceso se repite  --> renderizar-paginar... 
+        renderizarProductos(data.slice(0, renderProduct));
+        paginator(data, renderProduct);
+
+    })
+    filtros[1].addEventListener("click", () => {
+        dataAccesorios = data.filter(el => el.tipo == "Accesorio");
+        renderizarProductos(dataAccesorios.slice(0, renderProduct));
+        paginator(dataAccesorios, renderProduct);
+    })
+    filtros[2].addEventListener("click", () => {
+        dataRepuestos = data.filter(el => el.tipo == "Repuesto");
+        renderizarProductos(dataRepuestos.slice(0, renderProduct));
+        paginator(dataRepuestos, renderProduct);
+    })
+}
 
 
 ejecutarInicio();

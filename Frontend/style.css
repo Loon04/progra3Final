@@ -92,6 +92,10 @@ a {
     width: 330px;
     background-color: #acbfd1;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .filter-tittle {
@@ -110,4 +114,42 @@ a {
 
 .section-product {
     margin-bottom: 6rem;
+}
+
+.filtro {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 15px;
+    transition: box-shadow 0.3s, transform 0.2s;
+    cursor: pointer;
+    background: #c9e4ff;
+    margin: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #2d3e50;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+}
+
+.filtro:hover {
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.18);
+    transform: scale(1.005) translateY(-2px);
+    background: linear-gradient(135deg, #d0e6ff 60%, #b2d8ff 100%);
+    border-color: #2d6cdf;
+    color: #1b4fa0;
+}
+
+@media(max-width:400px) {
+    .filter-section {
+        flex-direction: row;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .filter-section .filtro {
+        width: 100%;
+        margin: 0;
+    }
+
 }
