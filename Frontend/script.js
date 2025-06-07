@@ -9,7 +9,7 @@ function obtenerUsuarioYcargar() {
         if (!usuario) {
             return
         }
-        localStorage.setItem("usuario", usuario);
+        localStorage.setItem("usuario", JSON.stringify(usuario));
         window.location.href = "./pages/Inicio/Inicio.html"
     })
 }

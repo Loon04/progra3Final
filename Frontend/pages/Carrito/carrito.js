@@ -2,8 +2,12 @@ function iniciarCarrito() {
 
     const carritoStorage = localStorage.getItem("carrito");
     let carrito = JSON.parse(carritoStorage);
+
+    const usuarioStorage = localStorage.getItem("usuario");
+    const usuario = JSON.parse(usuarioStorage);
+    
     renderizarProductosCarrito(carrito);
-    finalizarCompra();
+    finalizarCompra(usuario,carrito);
 }
 
 function renderizarProductosCarrito(carrito) {
@@ -94,15 +98,73 @@ function restarCantidad(producto, carrito) {
     renderizarProductosCarrito(carrito)
 }
 
-function finalizarCompra() {
+function finalizarCompra(usuario, carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
     btnFinalizarCompra.addEventListener('click', () => {
 
+        generarTicket(usuario,carrito)
+        /*
         setTimeout(() => {
-            window.location.href = "../Ticket/ticket.html";
-            //console.log("Ruta actual:", location.href);
+        window.location.href = "../Ticket/ticket.html";
         }, 1000);
+        */
     });
 }
+
+function generarTicket(usuario, carrito) {
+    //uso un CND en carrito.html. En la parte de carrito creamos el pdf y deberiamos borrar el carrito(al menos)
+    //Uso jsPDF que es el constructor de PDFs
+    //Funciona como pygame con posiciones en la hoja a4 predeterminada
+    //por ahora el paso a ticket.html esta acá porque no se descargaba el archivo pdf por el tiempo de carga
+    //es un canvas
+    let totalCompra = 0;
+    let cadena = '*';
+    let precioX = 140;
+
+    console.log(usuario);
+    console.log(carrito);
+
+    const { jsPDF } = window.jspdf; 
+    const pdf = new jsPDF('','',''); /////////////
+
+    pdf.text('TecStore',10,10) //titulo (texto,x,y) y= lineas de texto
+    pdf.text(`${cadena.repeat(85)}`,10,20)
+
+    pdf.text(`Comprador ${usuario}`,10,30)
+
+    const fechaActual = new Date().toLocaleDateString();
+    const horaActual = new Date().toLocaleTimeString();
+
+    pdf.text(`Fecha ${fechaActual} - Hora ${horaActual}`,10,40)
+
+    pdf.text("Cant.",10,50)
+    pdf.text('Item',35,50)
+    pdf.text('Precio',precioX,50)
+    pdf.text('Total',170,50)
+
+    pdf.text(`${cadena.repeat(85)}`,10,60)
+
+    let y = 70;
+    carrito.forEach((item) => {
+    pdf.text(`${item.cantidad}`, 10, y);
+    pdf.text(`${item.nombre}`,35,y)
+    pdf.text(`$${item.precio}`,precioX,y)
+    pdf.text(`$${item.precio*item.cantidad}`,170,y)
+    y += 10;
+    totalCompra += item.precio * item.cantidad 
+    });
+
+    pdf.text('TOTAL',10,y+10)
+    pdf.text(`$${totalCompra}`,170,y+10)
+    
+    //const pdfBase64 = pdf.output('datauristring');
+    //sessionStorage.setItem('ticketPDF', pdfBase64);
+    pdf.save("ticket.pdf");
+
+    setTimeout(() => {
+        window.location.href = "../Ticket/ticket.html";
+    }, 1000);
+}
+
 
 iniciarCarrito();
