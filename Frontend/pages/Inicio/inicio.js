@@ -31,15 +31,26 @@ function seleccion(container, selector) {
 
 function actualizarCarrito(container, selector, producto) {
     seleccion(container, selector).addEventListener('click', () => {
-
+        const funBoton = container.querySelector(selector);
         const elemento = carrito.find(el => el.id == producto.id);
+        const spanCant = container.querySelector(".cant-span");
+        console.log(spanCant);
         if (elemento) {
             elemento.cantidad++;
         } else {
             carrito.push({ ...producto, cantidad: 1 })
         }
-
-        console.log(carrito);
+        funBoton.classList.remove("btn-primary")
+        funBoton.classList.add("btn-success")
+        funBoton.innerText = "✔️ Agregado"
+        setTimeout(() => {
+            funBoton.innerText = "✅ Agregar mas"
+        }, 1500)
+        if (!elemento) {
+            spanCant.innerText = "Cantidad: 1";
+        } else {
+            spanCant.innerText = `Cantidad: ${elemento.cantidad}`
+        }
         save()
     })
 }
@@ -102,17 +113,23 @@ function renderizarProductos(data) {
         const productDiv = document.createElement('div');
         productDiv.className = 'card m-2';
         productDiv.style.width = '18rem';
+
+        const enCarrito = carrito.find(el => el.id == element.id);
+        const cantidad = enCarrito ? enCarrito.cantidad : 0;
+
         productDiv.innerHTML += `
             <img src="${element.imagen}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${element.nombre}</h5>
                 <p class="card-text">${element.descripcion}</p>
-                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                <a href="#" class="btn ${enCarrito ? 'btn-success' : 'btn-primary'}">
+                ${enCarrito ? '✅ Agregar más' : 'Agregar al carrito'}
+            </a>
+                <span class="cant-span">${cantidad > 0 ? `Cantidad: ${cantidad}` : ''}</span>
                 </div>
         </div>`
 
         fragment.appendChild(productDiv);
-
         actualizarCarrito(productDiv, '.btn', element)
     }
     );
