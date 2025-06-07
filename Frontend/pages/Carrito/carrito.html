@@ -31,7 +31,7 @@
                     <a href="#Admin"><i class="fa-solid fa-user-tie fa-lg"></i>Admin</a>
                 </li>
                 <li>
-                    <a href="#temaOscuro"><i class="fa-solid fa-moon fa-lg"></i>Tema</a>
+                    <a href="#temaOscuro" id="themeBtn"><i class="fa-solid fa-moon fa-lg"></i>Tema</a>
                 </li>
                 <li>
                     <a href="../Inicio/Inicio.html"><i class="fa-solid fa-shop"></i>Productos</a>
@@ -42,20 +42,21 @@
 
     <section class="section-cart container-fluid border border-secondary-subtle">
         <div class="row justify-content-around align-items-start">
-            <div class="col-12 col-md-7 bg-light rounded mb-3 mb-md-0">
+            <div class="col-12 col-md-7  rounded mb-3 mb-md-0">
                 <div class="p-2">Todos los productos</div>
                 <div class="p-2" id="product-container">
 
                 </div>
             </div>
 
-            <div class="col-12 col-md-3 bg-light rounded">
+            <div class="col-12 col-md-3  rounded">
                 <div class="p-2">Resumen de compra</div>
                 <div class="cart-total p-2">
-                    
+
                     <p>Total <span id="total-price">$ 0</span></p>
 
-                    <button class="boton-continuar btn btn-primary w-100 p-2" data-bs-toggle="modal" data-bs-target="#modal-finalizar">
+                    <button class="boton-continuar btn btn-primary w-100 p-2" data-bs-toggle="modal"
+                        data-bs-target="#modal-finalizar">
                         Continuar compra
                     </button>
 
@@ -64,13 +65,14 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button class="btn-close" data-bs-dismiss="modal"></button>
-                                </div >
+                                </div>
                                 <div class="modal-body">
                                     <p>¿Desea finalizar su compra?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                    <button class="finalizar-compra btn btn-primary" data-bs-dismiss="modal">Finalizar</button>
+                                    <button class="finalizar-compra btn btn-primary"
+                                        data-bs-dismiss="modal">Finalizar</button>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +83,7 @@
     </section>
 
     <!-- Seccion del footer {} -->
-    <footer class="footerUni container-fluid bg-light text-blue text-center border border-secondary-subtle p-5">
+    <footer class="footerUni container-fluid  text-blue text-center border border-secondary-subtle p-5">
         <div class="row justify-content-between">
 
             <div class="col-12 col-md-2">
@@ -104,7 +106,7 @@
             </div>
         </div>
 
-        <div class="text-muted">
+        <div style="color: gray;">
             Integrador Programación III
         </div>
     </footer>

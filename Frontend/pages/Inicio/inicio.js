@@ -2,7 +2,7 @@
 
 async function ejecutarInicio() {
     const usuario = localStorage.getItem("usuario");
-
+    cambiadorTema();
     if (!usuario) {
         window.location.href = "../../index.html"
     } else {
@@ -168,5 +168,32 @@ function funcionFiltro(data) {
     })
 }
 
+function cambiadorTema() {
+    const btnTema = document.getElementById("themeBtn");
+    const body = document.getElementsByTagName("body")[0];
+    const headerContainer = document.getElementsByTagName("header")[0];
+    const footer = document.getElementsByTagName("footer")[0];
+    const temaGuardado = localStorage.getItem("tema");
+    console.log(footer);
+    if (temaGuardado === "true") {
+        body.classList.add("dark");
+        body.classList.add("darkLinks");
+        headerContainer.classList.add("darkHeader");
+        footer.classList.add("darkFooter");
+    } else {
+        body.classList.remove("dark");
+        body.classList.remove("darkLinks")
+        headerContainer.classList.remove("darkHeader");
+        footer.classList.remove("darkFooter");
+    }
+
+    btnTema.addEventListener("click", () => {
+        let darkMode = body.classList.toggle("dark");
+        body.classList.toggle("darkLinks");
+        headerContainer.classList.toggle("darkHeader");
+        footer.classList.toggle("darkFooter");
+        localStorage.setItem("tema", darkMode);
+    });
+}
 
 ejecutarInicio();

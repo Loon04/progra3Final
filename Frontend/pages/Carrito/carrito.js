@@ -1,13 +1,13 @@
 function iniciarCarrito() {
-
+    cambiadorTema();
     const carritoStorage = localStorage.getItem("carrito");
     let carrito = JSON.parse(carritoStorage);
 
     const usuarioStorage = localStorage.getItem("usuario");
     const usuario = JSON.parse(usuarioStorage);
-    
+
     renderizarProductosCarrito(carrito);
-    finalizarCompra(usuario,carrito);
+    finalizarCompra(usuario, carrito);
 }
 
 function renderizarProductosCarrito(carrito) {
@@ -102,7 +102,7 @@ function finalizarCompra(usuario, carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
     btnFinalizarCompra.addEventListener('click', () => {
 
-        generarTicket(usuario,carrito)
+        generarTicket(usuario, carrito)
         /*
         setTimeout(() => {
         window.location.href = "../Ticket/ticket.html";
@@ -124,39 +124,39 @@ function generarTicket(usuario, carrito) {
     console.log(usuario);
     console.log(carrito);
 
-    const { jsPDF } = window.jspdf; 
-    const pdf = new jsPDF('','',''); /////////////
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('', '', ''); /////////////
 
-    pdf.text('TecStore',10,10) //titulo (texto,x,y) y= lineas de texto
-    pdf.text(`${cadena.repeat(85)}`,10,20)
+    pdf.text('TecStore', 10, 10) //titulo (texto,x,y) y= lineas de texto
+    pdf.text(`${cadena.repeat(85)}`, 10, 20)
 
-    pdf.text(`Comprador ${usuario}`,10,30)
+    pdf.text(`Comprador ${usuario}`, 10, 30)
 
     const fechaActual = new Date().toLocaleDateString();
     const horaActual = new Date().toLocaleTimeString();
 
-    pdf.text(`Fecha ${fechaActual} - Hora ${horaActual}`,10,40)
+    pdf.text(`Fecha ${fechaActual} - Hora ${horaActual}`, 10, 40)
 
-    pdf.text("Cant.",10,50)
-    pdf.text('Item',35,50)
-    pdf.text('Precio',precioX,50)
-    pdf.text('Total',170,50)
+    pdf.text("Cant.", 10, 50)
+    pdf.text('Item', 35, 50)
+    pdf.text('Precio', precioX, 50)
+    pdf.text('Total', 170, 50)
 
-    pdf.text(`${cadena.repeat(85)}`,10,60)
+    pdf.text(`${cadena.repeat(85)}`, 10, 60)
 
     let y = 70;
     carrito.forEach((item) => {
-    pdf.text(`${item.cantidad}`, 10, y);
-    pdf.text(`${item.nombre}`,35,y)
-    pdf.text(`$${item.precio}`,precioX,y)
-    pdf.text(`$${item.precio*item.cantidad}`,170,y)
-    y += 10;
-    totalCompra += item.precio * item.cantidad 
+        pdf.text(`${item.cantidad}`, 10, y);
+        pdf.text(`${item.nombre}`, 35, y)
+        pdf.text(`$${item.precio}`, precioX, y)
+        pdf.text(`$${item.precio * item.cantidad}`, 170, y)
+        y += 10;
+        totalCompra += item.precio * item.cantidad
     });
 
-    pdf.text('TOTAL',10,y+10)
-    pdf.text(`$${totalCompra}`,170,y+10)
-    
+    pdf.text('TOTAL', 10, y + 10)
+    pdf.text(`$${totalCompra}`, 170, y + 10)
+
     //const pdfBase64 = pdf.output('datauristring');
     //sessionStorage.setItem('ticketPDF', pdfBase64);
     pdf.save("ticket.pdf");
@@ -164,6 +164,34 @@ function generarTicket(usuario, carrito) {
     setTimeout(() => {
         window.location.href = "../Ticket/ticket.html";
     }, 1000);
+}
+
+function cambiadorTema() {
+    const btnTema = document.getElementById("themeBtn");
+    const body = document.getElementsByTagName("body")[0];
+    const headerContainer = document.getElementsByTagName("header")[0];
+    const footer = document.getElementsByTagName("footer")[0];
+    const temaGuardado = localStorage.getItem("tema");
+    console.log(footer);
+    if (temaGuardado === "true") {
+        body.classList.add("dark");
+        body.classList.add("darkLinks");
+        headerContainer.classList.add("darkHeader");
+        footer.classList.add("darkFooter");
+    } else {
+        body.classList.remove("dark");
+        body.classList.remove("darkLinks")
+        headerContainer.classList.remove("darkHeader");
+        footer.classList.remove("darkFooter");
+    }
+
+    btnTema.addEventListener("click", () => {
+        let darkMode = body.classList.toggle("dark");
+        body.classList.toggle("darkLinks");
+        headerContainer.classList.toggle("darkHeader");
+        footer.classList.toggle("darkFooter");
+        localStorage.setItem("tema", darkMode);
+    });
 }
 
 

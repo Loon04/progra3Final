@@ -182,6 +182,27 @@ a {
     }
 }
 
+.dark {
+    background-color: #181a1b;
+    color: #e8e6e3;
+    -webkit-tap-highlight-color: transparent;
+    border-color: #736b5e;
+}
+
+.darkLinks a {
+    color: #7BBEFE;
+}
+
+.darkfooter {
+    background-color: #2e4153;
+    border-color: #303436;
+}
+
+.darkHeader {
+    background-color: #2e4153;
+    border-color: #303436;
+}
+
 @media(max-width:500px) {
     .filter-section {
         width: 100%;
