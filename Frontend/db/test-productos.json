@@ -5,7 +5,7 @@
         "descripcion": "Cargador compatible con carga rápida para dispositivos Samsung y Android.",
         "precio": 4999.99,
         "stock": 15,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/KEe50-WF_s8jhfZ0pTxGRk-uuHldvRva0jJsSu4BZmk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjEwZlo0aHVwLUwu/anBn",
         "tipo": "Accesorio",
         "activo": true
     },
@@ -15,7 +15,7 @@
         "descripcion": "Auriculares estéreo con micrófono y estuche de carga.",
         "precio": 7999.00,
         "stock": 10,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/f_g79VaL7fagdER3zMdhG2tRfn-qX2EfLkLtvYWqpCU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFMWEtaQjZpWUwu/anBn",
         "tipo": "Accesorio",
         "activo": true
     },
@@ -25,7 +25,7 @@
         "descripcion": "Vidrio templado 9H anti-rayaduras para iPhone 13.",
         "precio": 1500.00,
         "stock": 30,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/iVMJcbpvBsZPB0GRNDGJSSFGRExmIVyx6ZM92idswQc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDF5UExLaFdhV0wu/anBn",
         "tipo": "Accesorio",
         "activo": true
     },
@@ -35,7 +35,7 @@
         "descripcion": "Soporte universal para móviles con rotación 360°.",
         "precio": 2999.00,
         "stock": 12,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/zCG9dS9SrhzTY5DVrb95gw-2WciwR9CTb4_FSXgZIVQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9hc3IvOTc0/NTM4YzYtMjEwZC00/NTcxLWJkY2UtMTU5/ZGMzMjYxYTcxLmY2/ODRhNDdiM2UwNWQ3/ODY0MzFjYmFkNTE0/Nzk2ODc2LmpwZWc_/b2RuSGVpZ2h0PTIw/MDAmb2RuV2lkdGg9/MjAwMCZvZG5CZz1m/ZmZmZmY",
         "tipo": "Accesorio",
         "activo": false
     },
@@ -45,7 +45,7 @@
         "descripcion": "Funda protectora antishock para Samsung Galaxy A32.",
         "precio": 1899.00,
         "stock": 20,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/-hVM9G8PbJ05S1PaR9WbcVs69OxHiq9pp9zCVYfRLvQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFnMWNjUE9YLUwu/anBn",
         "tipo": "Accesorio",
         "activo": true
     },
@@ -55,7 +55,7 @@
         "descripcion": "Pantalla LCD + táctil para iPhone X, repuesto de alta calidad.",
         "precio": 22999.00,
         "stock": 5,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/jIFjTp4nKMQyZCm55nvnYk958LblEmwAA9nd1d7Z6yk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFmK1V4SDhhbEwu/anBn",
         "tipo": "Repuesto",
         "activo": true
     },
@@ -65,7 +65,7 @@
         "descripcion": "Batería original para Samsung Galaxy J7 3000mAh.",
         "precio": 6999.00,
         "stock": 8,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/pw6geLU6Ek7T-M4d_aW2ODCkgNWQudgzf9bNDwx93Zg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/Xzk1NjA2NS1NTEE3/ODM2NjQyMjcyMF8w/ODIwMjQtVi53ZWJw",
         "tipo": "Repuesto",
         "activo": true
     },
@@ -75,7 +75,7 @@
         "descripcion": "Repuesto de cámara principal compatible con Moto G6.",
         "precio": 4999.00,
         "stock": 6,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://m.media-amazon.com/images/I/517OPiLgv4L._AC_SX679_.jpg",
         "tipo": "Repuesto",
         "activo": false
     },
@@ -85,7 +85,7 @@
         "descripcion": "Módulo de carga USB tipo C para Redmi Note 8.",
         "precio": 2599.00,
         "stock": 10,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/t9hJgBNU7T4f9amEO0e6wPEXHD2EdcmGParKmPwQTMU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGNkbi5jb20u/YnIvaW1nL2ltZ19w/cm9kLzEwNjQ0MjQv/MTgwX2NhYm9fZmxl/eF9tYWluX3N1Yl9k/ZV9jYXJnYV94aWFv/bWlfcmVkbWlfbm90/ZV8xM180Z18yOTMw/XzJfODFhMmU3ODIx/ZjJkN2M0NGJhMmM2/ZWY5NzhjMGJiMmMu/anBn",
         "tipo": "Repuesto",
         "activo": true
     },
@@ -95,7 +95,7 @@
         "descripcion": "Repuesto de micrófono compatible con Huawei P30.",
         "precio": 3499.00,
         "stock": 4,
-        "imagen": "../../img/logo.png",
+        "imagen": "https://imgs.search.brave.com/jhucaNgQ_tQRa7JnJkRn6e863MzR3Xgy0THOXzozIes/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZS1w/aWMtYTEuYWxpZXhw/cmVzcy1tZWRpYS5j/b20va2YvUzU2MDI4/NzVkNTE3MTRmYjU5/NjI1ZDc4NDBhYWZi/YzNmMi5qcGdfNDgw/eDQ4MHE3NS5qcGdf/LndlYnA",
         "tipo": "Repuesto",
         "activo": true
     }
