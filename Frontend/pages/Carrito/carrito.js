@@ -20,7 +20,7 @@ function renderizarProductosCarrito(carrito) {
         nombre.innerText = element.nombre;
         precio.innerText = "$" + element.precio;
         const img = document.createElement("img");
-        img.src = "../../img/logo.png";
+        img.src = element.imagen;
         img.className = "imgCarrito";
 
         const deleteBtn = document.createElement("button");
@@ -94,9 +94,9 @@ function restarCantidad(producto, carrito) {
     renderizarProductosCarrito(carrito)
 }
 
-function finalizarCompra(){
+function finalizarCompra() {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
-    btnFinalizarCompra.addEventListener('click',() =>{
+    btnFinalizarCompra.addEventListener('click', () => {
 
         setTimeout(() => {
             window.location.href = "../Ticket/ticket.html";
