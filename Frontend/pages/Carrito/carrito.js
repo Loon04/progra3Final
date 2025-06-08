@@ -157,9 +157,16 @@ function generarTicket(usuario, carrito) {
     pdf.text('TOTAL', 10, y + 10)
     pdf.text(`$${totalCompra}`, 170, y + 10)
 
-    //const pdfBase64 = pdf.output('datauristring');
-    //sessionStorage.setItem('ticketPDF', pdfBase64);
-    pdf.save("ticket.pdf");
+    //acá al pdf le da un formato URI(para identificar el recurso por nombre o locacion).
+    //Use URI para poder mostrar el ticket y descargar 
+    //desde la pagina ticket. Yo creo que hay que borrar el localStorage al salir de la pagina carrito
+    //esto es por si el usuario cierra la pagina ticket sin haber vuelto al inicio o cerrado de mala forma la ventana
+    //EL pdfBase64 esta codificado en base64, Se usa para pasar de binario a ASCII.
+    //lo guarda en el SesionStorage esto para que si el usuario completa la compra se borre para que no
+    //tenga problemas al generar otro ticket si sigue en la sesion
+    //Lo voy a usar para pasarle al <iframe> en el src="" que seria la ruta en donde esta el pdf
+    const pdfBase64 = pdf.output('datauristring');
+    sessionStorage.setItem('ticketPDF', pdfBase64);
 
     setTimeout(() => {
         window.location.href = "../Ticket/ticket.html";
