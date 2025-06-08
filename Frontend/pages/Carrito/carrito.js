@@ -8,21 +8,27 @@ function iniciarCarrito() {
         const carritoStorage = localStorage.getItem("carrito");
         let carrito = JSON.parse(carritoStorage);
 
-        const usuarioStorage = localStorage.getItem("usuario");
-        const usuario = JSON.parse(usuarioStorage);
-
         renderizarProductosCarrito(carrito);
-        finalizarCompra(usuario, carrito);
     }
 
 }
 
 function renderizarProductosCarrito(carrito) {
-    const contenedorProductos = document.getElementById("product-container");
-    const totalPrice = document.getElementById("total-price");
-    contenedorProductos.innerHTML = "";
-    let suma = 0;
-
+    if (carrito.length === 0){
+        const contenedorSeccionProductos = document.getElementsByClassName('section-cart')[0];
+        contenedorSeccionProductos.innerHTML = "";
+        const seccionVacia = document.createElement('div');
+        seccionVacia.className = "text-center text-secondary fs-5"
+        
+        seccionVacia.innerText = "Para continuar, debe agregar al menos un producto";
+        
+        contenedorSeccionProductos.appendChild(seccionVacia);
+    } else {
+        const contenedorProductos = document.getElementById("product-container");
+        const totalPrice = document.getElementById("total-price");
+        contenedorProductos.innerHTML = "";
+        let suma = 0;
+        
     carrito.forEach(element => {
         const div = document.createElement("div");
         const nombre = document.createElement("p");
@@ -64,7 +70,8 @@ function renderizarProductosCarrito(carrito) {
     })
     totalPrice.innerText = "";
     totalPrice.innerText = "$" + suma.toFixed(2);
-
+    finalizarCompra(carrito);
+}
 }
 
 
@@ -105,31 +112,25 @@ function restarCantidad(producto, carrito) {
     renderizarProductosCarrito(carrito)
 }
 
-function finalizarCompra(usuario, carrito) {
+function finalizarCompra(carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
     btnFinalizarCompra.addEventListener('click', () => {
 
-        generarTicket(usuario, carrito)
-        /*
-        setTimeout(() => {
-        window.location.href = "../Ticket/ticket.html";
-        }, 1000);
-        */
+        generarTicket(carrito)
     });
 }
 
-function generarTicket(usuario, carrito) {
+function generarTicket(carrito) {
     //uso un CND en carrito.html. En la parte de carrito creamos el pdf y deberiamos borrar el carrito(al menos)
     //Uso jsPDF que es el constructor de PDFs
     //Funciona como pygame con posiciones en la hoja a4 predeterminada
     //por ahora el paso a ticket.html esta acá porque no se descargaba el archivo pdf por el tiempo de carga
     //es un canvas
+    const usuarioStorage = localStorage.getItem("usuario");
+    const usuario = JSON.parse(usuarioStorage);
     let totalCompra = 0;
     let cadena = '*';
     let precioX = 140;
-
-    console.log(usuario);
-    console.log(carrito);
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF('', '', ''); /////////////
