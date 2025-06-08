@@ -1,13 +1,20 @@
 function iniciarCarrito() {
-    cambiadorTema();
-    const carritoStorage = localStorage.getItem("carrito");
-    let carrito = JSON.parse(carritoStorage);
 
-    const usuarioStorage = localStorage.getItem("usuario");
-    const usuario = JSON.parse(usuarioStorage);
+    let usuariols = localStorage.getItem("usuario");
+    if (!usuariols) {
+        window.location.href = "../../index.html"
+    } else {
+        cambiadorTema();
+        const carritoStorage = localStorage.getItem("carrito");
+        let carrito = JSON.parse(carritoStorage);
 
-    renderizarProductosCarrito(carrito);
-    finalizarCompra(usuario, carrito);
+        const usuarioStorage = localStorage.getItem("usuario");
+        const usuario = JSON.parse(usuarioStorage);
+
+        renderizarProductosCarrito(carrito);
+        finalizarCompra(usuario, carrito);
+    }
+
 }
 
 function renderizarProductosCarrito(carrito) {
