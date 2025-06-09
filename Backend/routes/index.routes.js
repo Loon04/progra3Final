@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { usuarioRoutes } from "./user.route.js"
+import usuarioRoutes from "./user.route.js"
 const rutas_init = () => {
     const router = Router();
 
@@ -8,4 +8,6 @@ const rutas_init = () => {
     return router;
 }
 
-module.exports = { rutas_init }
+export default {
+    rutas_init: rutas_init
+};
