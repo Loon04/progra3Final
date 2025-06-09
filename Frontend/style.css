@@ -203,6 +203,22 @@ a {
     border-color: #303436;
 }
 
+.price-cont {
+    width: 5.5rem;
+}
+
+.precio-card {
+    font-size: 17px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    color: #161e21;
+    padding: 0.04rem;
+    background-color: #ffd83e;
+    border: red 2px dotted;
+    border-radius: 5px;
+}
+
 @media(max-width:500px) {
     .filter-section {
         width: 100%;

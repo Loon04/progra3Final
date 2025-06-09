@@ -135,6 +135,9 @@ function renderizarProductos(data) {
             <div class="card-body">
                 <h5 class="card-title">${element.nombre}</h5>
                 <p class="card-text">${element.descripcion}</p>
+                <div class="price-cont">
+                    <p class="precio-card">$ ${element.precio}</p>
+                </div>
                 <a href="#" class="btn ${enCarrito ? 'btn-success' : 'btn-primary'}">
                 ${enCarrito ? '✅ Agregar más' : 'Agregar al carrito'}
             </a>
