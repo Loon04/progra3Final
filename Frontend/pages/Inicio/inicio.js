@@ -34,7 +34,7 @@ function actualizarCarrito(container, selector, producto) {
         const funBoton = container.querySelector(selector);
         const elemento = carrito.find(el => el.id == producto.id);
         const spanCant = container.querySelector(".cant-span");
-        console.log(spanCant);
+
         if (elemento) {
             elemento.cantidad++;
         } else {
@@ -79,7 +79,6 @@ function paginator(data, productosRenderizar) {
 
     function mostrarPagina() {
         const slicedData = data.slice(indiceActual, indiceActual + productosRenderizar);
-        console.log(slicedData);
         renderizarProductos(slicedData);
     }
 
@@ -174,7 +173,7 @@ function cambiadorTema() {
     const headerContainer = document.getElementsByTagName("header")[0];
     const footer = document.getElementsByTagName("footer")[0];
     const temaGuardado = localStorage.getItem("tema");
-    console.log(footer);
+
     if (temaGuardado === "true") {
         body.classList.add("dark");
         body.classList.add("darkLinks");

@@ -14,64 +14,64 @@ function iniciarCarrito() {
 }
 
 function renderizarProductosCarrito(carrito) {
-    if (carrito.length === 0){
+    if (!carrito || carrito.length === 0) {
         const contenedorSeccionProductos = document.getElementsByClassName('section-cart')[0];
         contenedorSeccionProductos.innerHTML = "";
         const seccionVacia = document.createElement('div');
         seccionVacia.className = "text-center text-secondary fs-5"
-        
+
         seccionVacia.innerText = "Para continuar, debe agregar al menos un producto";
-        
+
         contenedorSeccionProductos.appendChild(seccionVacia);
     } else {
         const contenedorProductos = document.getElementById("product-container");
         const totalPrice = document.getElementById("total-price");
         contenedorProductos.innerHTML = "";
         let suma = 0;
-        
-    carrito.forEach(element => {
-        const div = document.createElement("div");
-        const nombre = document.createElement("p");
-        const precio = document.createElement("p");
 
-        nombre.innerText = element.nombre;
-        precio.innerText = "$" + element.precio;
-        const img = document.createElement("img");
-        img.src = element.imagen;
-        img.className = "imgCarrito";
+        carrito.forEach(element => {
+            const div = document.createElement("div");
+            const nombre = document.createElement("p");
+            const precio = document.createElement("p");
 
-        const deleteBtn = document.createElement("button");
-        deleteBtn.className = "delete-button-product  btn btn-danger";
-        deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`
-        const cantidad = document.createElement("div");
-        cantidad.innerText = "cantidad: " + element.cantidad;
-        const btnSumCantidad = document.createElement("button");
-        btnSumCantidad.innerText = "+";
-        btnSumCantidad.className = "btn btn-secondary m-2"
-        btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito))
-        const btnRestCantidad = document.createElement("button");
-        btnRestCantidad.innerText = "-";
-        btnRestCantidad.className = "btn btn-secondary m-2"
-        btnRestCantidad.addEventListener("click", () => restarCantidad(element, carrito))
-        cantidad.appendChild(btnSumCantidad);
-        cantidad.appendChild(btnRestCantidad);
-        cantidad.appendChild(deleteBtn);
+            nombre.innerText = element.nombre;
+            precio.innerText = "$" + element.precio;
+            const img = document.createElement("img");
+            img.src = element.imagen;
+            img.className = "imgCarrito";
 
-        suma += element.precio * element.cantidad;
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-button-product  btn btn-danger";
+            deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`
+            const cantidad = document.createElement("div");
+            cantidad.innerText = "cantidad: " + element.cantidad;
+            const btnSumCantidad = document.createElement("button");
+            btnSumCantidad.innerText = "+";
+            btnSumCantidad.className = "btn btn-secondary m-2"
+            btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito))
+            const btnRestCantidad = document.createElement("button");
+            btnRestCantidad.innerText = "-";
+            btnRestCantidad.className = "btn btn-secondary m-2"
+            btnRestCantidad.addEventListener("click", () => restarCantidad(element, carrito))
+            cantidad.appendChild(btnSumCantidad);
+            cantidad.appendChild(btnRestCantidad);
+            cantidad.appendChild(deleteBtn);
 
-        div.appendChild(nombre);
-        div.appendChild(img);
-        div.appendChild(precio);
-        div.appendChild(cantidad);
+            suma += element.precio * element.cantidad;
 
-        contenedorProductos.appendChild(div);
+            div.appendChild(nombre);
+            div.appendChild(img);
+            div.appendChild(precio);
+            div.appendChild(cantidad);
 
-        actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
-    })
-    totalPrice.innerText = "";
-    totalPrice.innerText = "$" + suma.toFixed(2);
-    finalizarCompra(carrito);
-}
+            contenedorProductos.appendChild(div);
+
+            actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
+        })
+        totalPrice.innerText = "";
+        totalPrice.innerText = "$" + suma.toFixed(2);
+        finalizarCompra(carrito);
+    }
 }
 
 
@@ -101,13 +101,11 @@ function actualizarCarritoBorrar(container, selector, producto, carrito) {
 
 function sumarCantidad(producto, carrito) {
     if (producto.cantidad < 5) producto.cantidad++; // Luego cambiamos depende el stock del admin
-    console.log(carrito);
     save(carrito)
     renderizarProductosCarrito(carrito)
 }
 function restarCantidad(producto, carrito) {
     if (producto.cantidad > 1) producto.cantidad--;
-    console.log(carrito);
     save(carrito)
     renderizarProductosCarrito(carrito)
 }
@@ -187,7 +185,7 @@ function cambiadorTema() {
     const headerContainer = document.getElementsByTagName("header")[0];
     const footer = document.getElementsByTagName("footer")[0];
     const temaGuardado = localStorage.getItem("tema");
-    console.log(footer);
+
     if (temaGuardado === "true") {
         body.classList.add("dark");
         body.classList.add("darkLinks");
