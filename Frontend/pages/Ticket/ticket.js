@@ -79,7 +79,7 @@ function manejadorReinicioContinua() {
 }
 function reiniciarCompra() {
     localStorage.setItem("carrito", JSON.stringify([]));
-    window.location.href = "../Inicio/inicio.html"
+    window.location.href = "../Inicio/Inicio.html"
 }
 function salir() {
     localStorage.removeItem("carrito")
