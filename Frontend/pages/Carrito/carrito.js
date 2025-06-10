@@ -5,9 +5,7 @@ function iniciarCarrito() {
         window.location.href = "../../index.html"
     } else {
         cambiadorTema();
-        const carritoStorage = localStorage.getItem("carrito");
-        let carrito = JSON.parse(carritoStorage);
-
+        let carrito = getElemento('carrito')
         renderizarProductosCarrito(carrito);
     }
 
@@ -76,22 +74,33 @@ function renderizarProductosCarrito(carrito) {
 
 
 function EliminarProducto(carrito, producto) {
+    //crea un nuevo array 
     const nuevosProductos = carrito.filter(item => item.id !== producto.id);
-
+    //vacio el carrito para que no se repitan productos
     carrito.length = 0;
+    //agregar los de nuevo los productos sin el prod eliminado
     carrito.push(...nuevosProductos);
 }
 
+
 function seleccion(container, selector) {
+    //busca el boton dentro del contenedor
     const funBoton = container.querySelector(selector)
     return funBoton
 }
 
 function save(carrito) {
-    localStorage.setItem('carrito', JSON.stringify(carrito)); //aca esta el set
+    //guarda el carrito en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function getElemento(item) {
+    //le pasamos la clave almacenada y lo parseamos json
+    return JSON.parse(localStorage.getItem(item))
 }
 
 function actualizarCarritoBorrar(container, selector, producto, carrito) {
+    //func del btn que borra y renderiza el producto en el carrito. Actualiza el array carrito
     seleccion(container, selector).addEventListener('click', () => {
         EliminarProducto(carrito, producto)
         renderizarProductosCarrito(carrito);
@@ -124,8 +133,7 @@ function generarTicket(carrito) {
     //Funciona como pygame con posiciones en la hoja a4 predeterminada
     //por ahora el paso a ticket.html esta acá porque no se descargaba el archivo pdf por el tiempo de carga
     //es un canvas
-    const usuarioStorage = localStorage.getItem("usuario");
-    const usuario = JSON.parse(usuarioStorage);
+    const usuario = getElemento('usuario');
     let totalCompra = 0;
     let cadena = '*';
     let precioX = 140;
@@ -161,7 +169,7 @@ function generarTicket(carrito) {
     });
 
     pdf.text('TOTAL', 10, y + 10)
-    pdf.text(`$${totalCompra}`, 170, y + 10)
+    pdf.text(`$${totalCompra.toFixed(2)}`, 170, y + 10)
 
     //acá al pdf le da un formato URI(para identificar el recurso por nombre o locacion).
     //Use URI para poder mostrar el ticket y descargar 
