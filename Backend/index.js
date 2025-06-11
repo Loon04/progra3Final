@@ -1,21 +1,17 @@
 import express from "express";
-import userRoutes from "./routes/user.route.js"
-import routerConfig from "./routes/index.routes.js";
+import routerConfig from "./src/routes/index.routes.js";
 
 const configBasicaAPI = (app) => {
     app.use(express.json()); // pueda recibir jsons
     app.use(express.urlencoded({ extended: true })); // pueda recibir forms 
-
-
-    app.use("/api/usuarios", userRoutes);
-
 }
 const configuracionRouter = (app) => {
-    app.use("/api/", routerConfig.rutas_init)
+    app.use("/api/", routerConfig.rutas_init())
 }
 
 const configuracionMotorPlantillas = (app) => {
-
+    app.set("view engine", "ejs");
+    app.set("views", "./views");
 }
 
 const init = () => {
