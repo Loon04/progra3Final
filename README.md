@@ -45,23 +45,28 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
 
 ## 🔗 Cómo iniciar el proyecto
 
-1. Clonar el repositorio:
+1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com/lucas22-f/progra3Final.git
    cd progra3Final
+   ```
 
-   Instalar dependencias:
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+   Configurar la base de datos en `src/database/connection.js`.
 
-```bash
-    npm install
-    Configurar la base de datos en src/database/connection.js.
+--- 
+## ( Servidor todavia en desarrollo ).
 
-Iniciar el servidor:
+3. **Iniciar el servidor:**
+   ```bash
+   npm start
+   ```
 
-```bash
-    npm start
+4. **Acceder:**
+   - **Admin SSR:** [http://localhost:3000/admin](http://localhost:3000/admin)
+   - **Usuario CSR:** [http://localhost:3000/](http://localhost:3000/) (index.html desde public)
 
-Acceder:
-Admin SSR: http://localhost:3000/admin
-
-Usuario CSR: http://localhost:3000/ (index.html desde public)
+---
