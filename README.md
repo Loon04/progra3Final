@@ -50,6 +50,8 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    git clone https://github.com/lucas22-f/progra3Final.git
    cd progra3Final
    ```
+--- 
+## ( Servidor todavia en desarrollo ).
 
 2. **Instalar dependencias:**
    ```bash
@@ -57,8 +59,8 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    ```
    Configurar la base de datos en `src/database/connection.js`.
 
---- 
-## ( Servidor todavia en desarrollo ).
+
+
 
 3. **Iniciar el servidor:**
    ```bash
