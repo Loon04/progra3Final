@@ -14,6 +14,10 @@ const configuracionRouter = (app) => {
     app.use("/api/", routerConfig.rutas_init)
 }
 
+const configuracionMotorPlantillas = (app) => {
+
+}
+
 const init = () => {
     const app = express();
 
