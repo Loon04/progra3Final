@@ -11,7 +11,7 @@ Este proyecto es un sistema de autoservicio desarrollado como entrega final para
 - **Base de datos**: MySQL.
 - **Frontend de usuario (CSR)**: HTML, CSS y JavaScript puro (sin frameworks).
 - **Renderizado del admin**: EJS + Express.
-- **PDFKit**: Para generar el ticket de compra en PDF.
+- **jsPDF **: Para generar el ticket de compra en PDF.
 
 ---
 
@@ -24,9 +24,7 @@ Los administradores acceden a una interfaz renderizada desde el servidor (con EJ
 
 - Crear, editar o eliminar productos.
 - Ver ventas realizadas.
-- Descargar reportes en PDF.
 
-Rutas protegidas y controladas desde Express con middleware.
 
 ---
 
