@@ -45,15 +45,20 @@ function cambiadorTema() {
         body.classList.add("darkLinks");
         headerContainer.classList.add("darkHeader");
         footer.classList.add("darkFooter");
+        btnTema.innerHTML = `<i class="fa-solid fa-sun fa-lg"></i> Tema`;
     } else {
         body.classList.remove("dark");
         body.classList.remove("darkLinks")
         headerContainer.classList.remove("darkHeader");
         footer.classList.remove("darkFooter");
+        btnTema.innerHTML = `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
     }
 
     btnTema.addEventListener("click", () => {
         let darkMode = body.classList.toggle("dark");
+        btnTema.innerHTML = darkMode
+            ? `<i class="fa-solid fa-sun fa-lg"></i> Tema`
+            : `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
         body.classList.toggle("darkLinks");
         headerContainer.classList.toggle("darkHeader");
         footer.classList.toggle("darkFooter");
