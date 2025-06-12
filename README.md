@@ -66,6 +66,6 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    ```
 
 4. **Acceder:**
-   - **Admin SSR:** [http://localhost:3000/admin](http://localhost:3000/api/usuarios/admin/login)
+   - **Admin SSR:** [http://localhost:5000/api/usuarios/admin/login](http://localhost:5000/api/usuarios/admin/login)
 
 ---
