@@ -8,6 +8,7 @@ async function ejecutarInicio() { // funcion principal que ejecuta las subFuncio
     } else {
         cargarDataCarritoHeader(); // funcion que carga el carrito en el header
         cargarProductos();
+        salirSesion();
     }
 }
 
@@ -258,6 +259,18 @@ function cargarDataCarritoHeader() {
     cartHeader.appendChild(div);
 
 
+}
+
+function salir() {
+    localStorage.removeItem("carrito")
+    localStorage.removeItem("usuario")
+    localStorage.removeItem("tema")
+    window.location.href = "../../index.html"
+}
+
+function salirSesion() {
+    const btnSalida =document.getElementById('salirBtn');
+    btnSalida.addEventListener('click',() => salir());
 }
 
 ejecutarInicio();

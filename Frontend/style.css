@@ -61,7 +61,8 @@ nav {
 }
 
 .nav-list li,
-a {
+a,
+.boton-admin {
     display: flex;
     list-style: none;
     text-decoration: none;

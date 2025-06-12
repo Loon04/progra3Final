@@ -7,6 +7,7 @@ function iniciarCarrito() {
         cambiadorTema();
         let carrito = getElemento('carrito')
         renderizarProductosCarrito(carrito);
+        salirSesion();
     }
 
 }
@@ -185,6 +186,18 @@ function generarTicket(carrito) {
     setTimeout(() => {
         window.location.href = "../Ticket/ticket.html";
     }, 1000);
+}
+
+function salir() {
+    localStorage.removeItem("carrito")
+    localStorage.removeItem("usuario")
+    localStorage.removeItem("tema")
+    window.location.href = "../../index.html"
+}
+
+function salirSesion() {
+    const btnSalida =document.getElementById('salirBtn');
+    btnSalida.addEventListener('click',() => salir());
 }
 
 function cambiadorTema() {

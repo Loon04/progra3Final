@@ -67,6 +67,7 @@ function cambiadorTema() {
 }
 
 function manejadorReinicioContinua() {
+    const btnSalida =document.getElementById('salirBtn'); //del header
     const btnContenedor = document.getElementById("btnContenedor");
     btnContenedor.className = "container-fluid d-flex";
     const btnVolver = document.createElement("button")
@@ -78,6 +79,7 @@ function manejadorReinicioContinua() {
     btnSalir.innerText = "Salir"
     btnVolver.addEventListener("click", () => reiniciarCompra())
     btnSalir.addEventListener("click", () => salir())
+    btnSalida.addEventListener('click',() => salir()); //del header
     btnContenedor.appendChild(btnVolver);
     btnContenedor.appendChild(btnSalir);
     console.log(btnContenedor);
