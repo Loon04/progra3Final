@@ -11,6 +11,9 @@ export default {
         const usuario = userService.getUserLogin(req);
         res.status(200).json(usuario);
 
+    },
+    renderLogin: (req, res) => {
+        res.status(200).render("login");
     }
 
 

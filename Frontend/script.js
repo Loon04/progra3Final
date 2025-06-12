@@ -13,13 +13,19 @@ function obtenerUsuarioYcargar() { // funcion principal del index donde iniciali
     })
 
     const btnLogin = document.getElementById('boton-admin')
-    btnLogin.addEventListener('click',()=>{
+    btnLogin.addEventListener('click', () => {
         console.log("ogrgmreok");
-        
+        loadAdminSystem();
+
     });
 
 }
 
+async function loadAdminSystem() {
+
+    window.location.href = "http://localhost:5000/api/usuarios/admin/login";
+
+}
 
 function runApp() { // funcion que arranca la funcion principal
     obtenerUsuarioYcargar();

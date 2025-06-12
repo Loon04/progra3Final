@@ -1,8 +1,10 @@
 import express from "express";
 import routerConfig from "./routes/index.routes.js";
+import cors from "cors";
 import { join, __dirname } from "./utils/utils.js";
 
 const configBasicaAPI = (app) => {
+    app.use(cors());
     app.use(express.json()); // pueda recibir jsons
     app.use(express.urlencoded({ extended: true })); // pueda recibir forms 
 }
