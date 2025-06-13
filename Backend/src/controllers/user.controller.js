@@ -1,19 +1,31 @@
+
 import userService from "../services/user.service.js"
 
 export default {
+    login: async (req, res) => {
 
-    register: (req, res) => {
-        const usuario = userService.getUserRegister(req);
-        res.status(200).json(usuario);
-
-    },
-    login: (req, res) => {
-        const usuario = userService.getUserLogin(req);
-        res.status(200).json(usuario);
+        let user = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        let systemUser = await userService.loginUser(user)
+        if (systemUser) {
+            res.redirect("/api/usuarios/admin/dashboard");
+        } else {
+            res.status(401).render("login", { error: "Usuario o contraseña incorrectos" });
+        }
 
     },
     renderLogin: (req, res) => {
         res.status(200).render("login");
+    },
+    renderDashboard: (req, res) => {
+
+        const productos = [
+            { id: 1, nombre: "Producto 1", precio: 100 }
+        ];
+        res.status(200).render("dashboard", { productos });
+
     }
 
 

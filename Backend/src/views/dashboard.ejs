@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <h1>Panel de Administración ( PANEL DE PRUEBA N1 )</h1>
+        <div>
+            <span>Bienvenido</span>
+            <a href="/admin/logout" class="btn-logout">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="dashboard-actions">
+            <a href="/admin/productos/nuevo" class="btn btn-primary">Agregar producto</a>
+        </section>
+
+        <section class="dashboard-list">
+            <h2>Productos</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (productos && productos.length> 0) { %>
+                        <% productos.forEach(producto=> { %>
+                            <tr>
+                                <td>
+                                    <%= producto.id %>
+                                </td>
+                                <td>
+                                    <%= producto.nombre %>
+                                </td>
+                                <td>$<%= producto.precio %>
+                                </td>
+                                <td>
+                                    <%= producto.stock %>
+                                </td>
+                                <td>
+                                    <a href="/admin/productos/<%= producto.id %>/editar"
+                                        class="btn btn-sm btn-warning">Editar</a>
+                                    <form action="/admin/productos/<%= producto.id %>?_method=DELETE" method="POST"
+                                        style="display:inline;">
+                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="5" style="text-align:center;">No hay productos cargados.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
