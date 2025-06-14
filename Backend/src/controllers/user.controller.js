@@ -1,5 +1,6 @@
 
 import userService from "../services/user.service.js"
+import productService from "../services/product.service.js"
 
 export default {
     login: async (req, res) => {
@@ -9,7 +10,8 @@ export default {
             password: req.body.password
         }
         let systemUser = await userService.loginUser(user)
-
+        console.log(systemUser);
+        
         if (systemUser) {
             res.redirect("/api/usuarios/admin/dashboard");
         } else {
@@ -20,12 +22,11 @@ export default {
     renderLogin: (req, res) => {
         res.status(200).render("login");
     },
-    renderDashboard: (req, res) => {
+    renderDashboard: async (req, res) => {
 
-        const productos = [ // aca necesitariamos el servicio de productos para recuperarlos de la BD... 
-            { id: 1, nombre: "Producto 1", precio: 100 }
-        ];
-        res.status(200).render("dashboard", { productos });
+        let productos = await productService.getProducts();
+
+        res.status(200).render("dashboard", {productos});
 
     }
 
