@@ -8,6 +8,6 @@ export default {
         return req.body;
     },
     loginUser: async (reqUser) => {
-        return UserDao.getUser(reqUser.username);
+        return UserDao.getUserLogin(reqUser);
     }
 }
