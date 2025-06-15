@@ -2,11 +2,14 @@ import express from "express";
 import routerConfig from "./routes/index.routes.js";
 import cors from "cors";
 import { join, __dirname } from "./utils/utils.js";
+import methodOverride from "method-override";
 
+// middlewares
 const configBasicaAPI = (app) => {
-    app.use(cors());
-    app.use(express.json()); // pueda recibir jsons
     app.use(express.urlencoded({ extended: true })); // pueda recibir forms 
+    app.use(express.json()); // pueda recibir jsons
+    app.use(methodOverride('_method')); //para que en html se pueda usar PUT y DELETE
+    app.use(cors());
 }
 const configuracionRouter = (app) => { // configuracion de las rutas 
     app.use("/api/", routerConfig.rutas_init())

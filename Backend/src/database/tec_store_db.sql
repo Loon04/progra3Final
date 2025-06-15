@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2025 a las 19:49:00
+-- Tiempo de generación: 15-06-2025 a las 09:29:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,10 +33,21 @@ CREATE TABLE `productos` (
   `descripcion` varchar(150) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `imagen` varbinary(255) NOT NULL,
-  `tipo` varchar(50) NOT NULL,
+  `imagen` varbinary(255) DEFAULT NULL,
+  `tipo` enum('Accesorio','Repuesto') NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `imagen`, `tipo`, `activo`) VALUES
+(1, 'Cargador Rápido USB-C 25W', 'Cargador compatible con carga rápida para dispositivos Samsung y Android.', 4999.99, 15, NULL, 'Accesorio', 1),
+(2, 'Auriculares Bluetooth Inalámbricos', 'Auriculares estéreo con micrófono y estuche de carga.', 7999.00, 10, NULL, 'Accesorio', 1),
+(3, 'Protector de Pantalla Vidrio Templado', 'Vidrio templado 9H anti-rayaduras para iPhone 13.', 1500.00, 30, NULL, 'Accesorio', 1),
+(4, 'Soporte para Auto con Ventosa', 'Soporte universal para móviles con rotación 360°.', 2999.00, 12, NULL, 'Accesorio', 1),
+(5, 'Funda Silicona Samsung A32', 'Funda protectora antishock para Samsung Galaxy A32.', 1899.00, 20, NULL, 'Accesorio', 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +131,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_ventas`

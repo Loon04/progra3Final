@@ -32,6 +32,7 @@
                         <th>Precio</th>
                         <th>Stock</th>
                         <th>Acciones</th>
+                        <th>Activo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,6 +57,9 @@
                                         style="display:inline;">
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
+                                </td>
+                                <td>
+                                    <%= producto.activo %>
                                 </td>
                             </tr>
                             <% }) %>
