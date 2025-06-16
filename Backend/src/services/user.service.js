@@ -9,5 +9,8 @@ export default {
     },
     loginUser: async (reqUser) => {
         return UserDao.getUserLogin(reqUser);
+    },
+    getFastUser: async () => {
+        return UserDao.getFastUser();
     }
 }
