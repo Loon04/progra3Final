@@ -53,13 +53,13 @@
                                 <td>
                                     <a href="/admin/productos/<%= producto.id %>/editar"
                                         class="btn btn-sm btn-warning">Editar</a>
-                                    <form action="/admin/productos/<%= producto.id %>?_method=DELETE" method="POST"
+                                    <form action="/api/productos/admin/<%= producto.id %>?_method=DELETE" method="POST"
                                         style="display:inline;">
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/api/admin/productos/<%= producto.id %>?_method=PUT" method="POST"
+                                    <form action="/api/productos/admin/<%= producto.id %>?_method=PUT" method="POST"
                                         style="display:inline;">
                                         <button type="submit" class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
                                             <%= producto.activo ? 'Desactivar' : 'Activar' %>
