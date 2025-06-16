@@ -19,7 +19,7 @@
 
     <main class="dashboard-main">
         <section class="dashboard-actions">
-            <a href="/admin/productos/nuevo" class="btn btn-primary">Agregar producto</a>
+            <a href="/api/productos/admin/nuevo" class="btn btn-primary">Agregar producto</a>
         </section>
 
         <section class="dashboard-list">
@@ -61,7 +61,8 @@
                                 <td>
                                     <form action="/api/productos/admin/<%= producto.id %>?_method=PUT" method="POST"
                                         style="display:inline;">
-                                        <button type="submit" class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
+                                        <button type="submit"
+                                            class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
                                             <%= producto.activo ? 'Desactivar' : 'Activar' %>
                                         </button>
                                     </form>

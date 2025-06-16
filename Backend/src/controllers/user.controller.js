@@ -13,9 +13,9 @@ export default {
         console.log(systemUser);
 
         if (systemUser) {
-            res.redirect("/api/usuarios/admin/dashboard");
+            return res.redirect("/api/usuarios/admin/dashboard");
         } else {
-            res.status(401).render("login", { error: "Usuario o contraseña incorrectos" });
+            return res.status(401).render("login", { error: "Usuario o contraseña incorrectos" });
         }
 
     },
@@ -26,13 +26,13 @@ export default {
 
         let productos = await productService.getProducts();
 
-        res.status(200).render("dashboard", { productos });
+        return res.status(200).render("dashboard", { productos });
 
     },
     fastAcces: async (req, res) => {
         let user = await userService.getFastUser();
-        if (user) res.status(200).send(user);
-        res.status(401);
+        if (user) return res.status(200).send(user);
+        return res.status(401);
 
     }
 
