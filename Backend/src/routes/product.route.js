@@ -3,6 +3,6 @@ import productController from "../controllers/product.controller.js";
 
 const productoRoutes = Router();
 
-productoRoutes.delete("/admin/productos/:id", productController.deleteProduct);
+productoRoutes.delete("/admin/:id", productController.deleteProduct);
 
 export default productoRoutes;

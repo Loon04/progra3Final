@@ -7,7 +7,7 @@ const rutas_init = () => {
 
 
     router.use("/usuarios", usuarioRoutes);
-    router.use("/", productoRoutes);
+    router.use("/productos", productoRoutes);
     return router;
 }
 
