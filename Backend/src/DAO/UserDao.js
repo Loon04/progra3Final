@@ -10,6 +10,11 @@ export default {
             return rows;
         }
         return null;
+    },
+    async getFastUser() {
+        const [user] = await conn.query("SELECT * from usuarios LIMIT 1");
+        if (user) return user[0];
+        return null;
     }
 
 

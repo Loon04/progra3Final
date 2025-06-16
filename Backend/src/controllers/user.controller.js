@@ -11,7 +11,7 @@ export default {
         }
         let systemUser = await userService.loginUser(user)
         console.log(systemUser);
-        
+
         if (systemUser) {
             res.redirect("/api/usuarios/admin/dashboard");
         } else {
@@ -26,9 +26,17 @@ export default {
 
         let productos = await productService.getProducts();
 
-        res.status(200).render("dashboard", {productos});
+        res.status(200).render("dashboard", { productos });
+
+    },
+    fastAcces: async (req, res) => {
+        let user = await userService.getFastUser();
+        if (user) res.status(200).send(user);
+        res.status(401);
 
     }
+
+
 
 
 }

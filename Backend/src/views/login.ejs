@@ -28,7 +28,21 @@
                     </div>
                     <button type="submit" class="btn-login">Ingresar</button>
         </form>
+        <button class="btn-acces">Acceso Rapido</button>
     </div>
+    <script>
+        document.getElementsByClassName("btn-acces")[0].addEventListener("click", async () => {
+            try {
+                const res = await fetch("/api/usuarios/admin/fast-access")
+                if (!res.ok) throw new Error("No se pudo obtener acceso rapido");
+                const data = await res.json();
+                document.getElementById("username").value = data.username;
+                document.getElementById("password").value = data.password;
+            } catch (error) {
+                alert("Error al obtener fast access");
+            }
+        })
+    </script>
 </body>
 
 </html>
