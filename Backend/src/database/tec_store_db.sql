@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2025 a las 09:29:23
+-- Tiempo de generación: 17-06-2025 a las 17:25:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,9 +33,9 @@ CREATE TABLE `productos` (
   `descripcion` varchar(150) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `imagen` varbinary(255) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `tipo` enum('Accesorio','Repuesto') NOT NULL,
-  `activo` tinyint(1) NOT NULL DEFAULT 1
+  `activo` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -43,11 +43,16 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `imagen`, `tipo`, `activo`) VALUES
-(1, 'Cargador Rápido USB-C 25W', 'Cargador compatible con carga rápida para dispositivos Samsung y Android.', 4999.99, 15, NULL, 'Accesorio', 1),
-(2, 'Auriculares Bluetooth Inalámbricos', 'Auriculares estéreo con micrófono y estuche de carga.', 7999.00, 10, NULL, 'Accesorio', 1),
-(3, 'Protector de Pantalla Vidrio Templado', 'Vidrio templado 9H anti-rayaduras para iPhone 13.', 1500.00, 30, NULL, 'Accesorio', 1),
-(4, 'Soporte para Auto con Ventosa', 'Soporte universal para móviles con rotación 360°.', 2999.00, 12, NULL, 'Accesorio', 1),
-(5, 'Funda Silicona Samsung A32', 'Funda protectora antishock para Samsung Galaxy A32.', 1899.00, 20, NULL, 'Accesorio', 1);
+(10, 'Cargador Rápido USB-C 25W', 'Cargador compatible con carga rápida para dispositivos Samsung y Android.', 4999.99, 15, 'https://imgs.search.brave.com/KEe50-WF_s8jhfZ0pTxGRk-uuHldvRva0jJsSu4BZmk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjEwZlo0aHVwLUwu/anBn', 'Accesorio', 1),
+(11, 'Auriculares Bluetooth Inalámbricos', 'Auriculares estéreo con micrófono y estuche de carga.', 7999.00, 10, 'https://imgs.search.brave.com/f_g79VaL7fagdER3zMdhG2tRfn-qX2EfLkLtvYWqpCU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFMWEtaQjZpWUwu/anBn', 'Accesorio', 1),
+(12, 'Protector de Pantalla Vidrio Templado', 'Vidrio templado 9H anti-rayaduras para iPhone 13.', 1500.00, 30, 'https://imgs.search.brave.com/iVMJcbpvBsZPB0GRNDGJSSFGRExmIVyx6ZM92idswQc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDF5UExLaFdhV0wu/anBn', 'Accesorio', 1),
+(13, 'Soporte para Auto con Ventosa', 'Soporte universal para móviles con rotación 360°.', 2999.00, 12, 'https://imgs.search.brave.com/zCG9dS9SrhzTY5DVrb95gw-2WciwR9CTb4_FSXgZIVQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9hc3IvOTc0/NTM4YzYtMjEwZC00/NTcxLWJkY2UtMTU5/ZGMzMjYxYTcxLmY2/ODRhNDdiM2UwNWQ3/ODY0MzFjYmFkNTE0/Nzk2ODc2LmpwZWc_/b2RuSG', 'Accesorio', 0),
+(14, 'Funda Silicona Samsung A32', 'Funda protectora antishock para Samsung Galaxy A32.', 1899.00, 20, 'https://imgs.search.brave.com/-hVM9G8PbJ05S1PaR9WbcVs69OxHiq9pp9zCVYfRLvQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFnMWNjUE9YLUwu/anBn', 'Accesorio', 1),
+(15, 'Pantalla Repuesto iPhone X', 'Pantalla LCD + táctil para iPhone X, repuesto de alta calidad.', 22999.00, 5, 'https://imgs.search.brave.com/jIFjTp4nKMQyZCm55nvnYk958LblEmwAA9nd1d7Z6yk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFmK1V4SDhhbEwu/anBn', 'Repuesto', 1),
+(16, 'Batería Interna Samsung J7', 'Batería original para Samsung Galaxy J7 3000mAh.', 6999.00, 8, 'https://imgs.search.brave.com/pw6geLU6Ek7T-M4d_aW2ODCkgNWQudgzf9bNDwx93Zg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/Xzk1NjA2NS1NTEE3/ODM2NjQyMjcyMF8w/ODIwMjQtVi53ZWJw', 'Repuesto', 1),
+(17, 'Cámara Trasera Moto G6', 'Repuesto de cámara principal compatible con Moto G6.', 4999.00, 6, 'https://m.media-amazon.com/images/I/517OPiLgv4L._AC_SX679_.jpg', 'Repuesto', 1),
+(18, 'Flex de carga Xiaomi Redmi Note 8', 'Módulo de carga USB tipo C para Redmi Note 8.', 2599.00, 10, 'https://imgs.search.brave.com/t9hJgBNU7T4f9amEO0e6wPEXHD2EdcmGParKmPwQTMU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGNkbi5jb20u/YnIvaW1nL2ltZ19w/cm9kLzEwNjQ0MjQv/MTgwX2NhYm9fZmxl/eF9tYWluX3N1Yl9k/ZV9jYXJnYV94aWFv/bWlfcmVkbWlfbm90/ZV8xM180Z18yOTMw/XzJfOD', 'Repuesto', 0),
+(19, 'Micrófono Interno Huawei P30', 'Repuesto de micrófono compatible con Huawei P30.', 3499.00, 4, 'https://imgs.search.brave.com/jhucaNgQ_tQRa7JnJkRn6e863MzR3Xgy0THOXzozIes/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZS1w/aWMtYTEuYWxpZXhw/cmVzcy1tZWRpYS5j/b20va2YvUzU2MDI4/NzVkNTE3MTRmYjU5/NjI1ZDc4NDBhYWZi/YzNmMi5qcGdfNDgw/eDQ4MHE3NS5qcGdf/LndlYnA', 'Repuesto', 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_ventas`
