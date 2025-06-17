@@ -8,9 +8,12 @@ export default {
         return ProductDao.getById(id);
     },
     putProduct: (id, campos) => {
-        return ProductDao.update(id,campos);
+        return ProductDao.update(id, campos);
     },
     deleteProduct: (id) => {
         return ProductDao.delete(id);
+    },
+    createProduct: async (bodyProduct) => {
+        return ProductDao.createProduct(bodyProduct);
     }
 }

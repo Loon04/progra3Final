@@ -37,5 +37,18 @@ export default {
         let id = req.params.id;
         let [producto] = await productService.getById(id);
         return res.status(200).render("editProducto", { producto });
+    },
+    addProduct: async (req, res) => {
+        let bodyProduct = req.body;
+        console.log(bodyProduct);
+        let productoCreado = await productService.createProduct(bodyProduct);
+        console.log(productoCreado);
+        if (productoCreado) {
+            return res.status(201).redirect("/api/usuarios/admin/dashboard");
+        } else {
+            return res.status(500).send("Error en la base de datos");
+        }
+
+
     }
 }

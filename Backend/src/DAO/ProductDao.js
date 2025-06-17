@@ -6,12 +6,12 @@ export default {
         return rows;
     },
 
-    async getById(id){ //[{},{}]
+    async getById(id) { //[{},{}]
         const [rows] = await conn.execute("SELECT * from productos WHERE id = ?", [id]);
         return rows; //[{}]
     },
 
-    async update(id, updatedCampos=Object){ //put //rev para /editar
+    async update(id, updatedCampos = Object) { //put //rev para /editar
         //const [rows] = await conn.execute("UPDATE productos SET activo= 0 WHERE id = ?", [product.activo,product.id]);
         //return rows
         const keys = Object.keys(updatedCampos);
@@ -21,8 +21,17 @@ export default {
         return rows;
     },
 
-    async delete(id){
+    async delete(id) {
         const [rows] = await conn.execute("DELETE from productos WHERE id = ?", [id]);
         return rows; //un objeto con info del cambio. No es como el rows de getAll(). Tambien tiene el segundo obj. Desestructurar
+    },
+    async createProduct(bodyProduct) {
+        try {
+            const { nombre, descripcion, precio, stock, imagen, tipo } = bodyProduct;
+            const [rows] = await conn.execute("INSERT into productos (nombre, descripcion, precio, stock, imagen,tipo) values(?,?,?,?,?,?)", [nombre, descripcion, precio, stock, imagen, tipo])
+            return rows;
+        } catch (error) {
+            return error;
+        }
     }
 }

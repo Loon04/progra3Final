@@ -31,6 +31,7 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
+                        <th>Tipo</th>
                         <th>Acciones</th>
                         <th>Activo</th>
                     </tr>
@@ -49,6 +50,9 @@
                                 </td>
                                 <td>
                                     <%= producto.stock %>
+                                </td>
+                                <td>
+                                    <%= producto.tipo %>
                                 </td>
                                 <td>
                                     <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"

@@ -6,6 +6,7 @@ const productoRoutes = Router();
 productoRoutes.put("/admin/:id", productController.updateProductActive)
 productoRoutes.delete("/admin/:id", productController.deleteProduct);
 productoRoutes.get("/admin/nuevo", productController.renderAddProduct);
+productoRoutes.post("/admin/nuevo", productController.addProduct);
 productoRoutes.get("/admin/edit/:id", productController.renderEditProduct);
 
 export default productoRoutes;
