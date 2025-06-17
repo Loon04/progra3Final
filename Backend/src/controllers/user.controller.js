@@ -10,7 +10,6 @@ export default {
             password: req.body.password
         }
         let systemUser = await userService.loginUser(user)
-        console.log(systemUser);
 
         if (systemUser) {
             return res.redirect("/api/usuarios/admin/dashboard");
