@@ -60,6 +60,10 @@ export default {
     renderInactives: async (req, res) => {
         let productos = await productService.getInactivos();
         return res.render("inactive", { productos });
+    },
+    getAll: async (req, res) => {
+        let productos = await productService.getProducts();
+        return res.status(200).json(productos);
     }
 
 }

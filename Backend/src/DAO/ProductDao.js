@@ -39,9 +39,11 @@ export default {
         try {
             const { nombre, descripcion, precio, stock, imagen, tipo } = bodyNewProduct;
             const [rows] = await conn.execute("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ?, imagen = ?, tipo = ? WHERE id = ?", [nombre, descripcion, precio, stock, imagen, tipo, id])
-            if (rows.length > 0) return rows;
-            return null
+            if (rows.affectedRows != 0) return true;
+            console.log(rows);
+            return false
         } catch (error) {
+            console.log(error);
             return error;
         }
     },
