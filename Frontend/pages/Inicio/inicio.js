@@ -16,7 +16,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || []; //aca esta el g
 
 async function cargarProductos() { // esta funcion se encarga de recuperar los datos asyncronos.
 
-    const request = await fetch("../../db/test-productos.json");
+    const request = await fetch("http://localhost:5000/api/productos/all");
     let data = await request.json();
     data = await data.map((el) => ({ ...el, cantidad: 0 })) // a los datos que vienen de prueba le agregamos el campo cantidad
 
@@ -121,17 +121,19 @@ function renderizarProductos(data) {
 
     //recorremos los datos y creamos las cards
     data.forEach(element => {
+        if (element.activo === 1) {
 
-        const productDiv = document.createElement('div');
-        productDiv.className = 'card m-2';
-        productDiv.style.width = '18rem';
-        //esta constante la utilizamos mas adelante para checkear si el usuario agrego el producto al carrito
-        const enCarrito = carrito.find(el => el.id == element.id);
 
-        //esta otra la usamos para modificar las cards y agregar la cantidad si el usuario lo agrego al carro
-        const cantidad = enCarrito ? enCarrito.cantidad : 0;
+            const productDiv = document.createElement('div');
+            productDiv.className = 'card m-2';
+            productDiv.style.width = '18rem';
+            //esta constante la utilizamos mas adelante para checkear si el usuario agrego el producto al carrito
+            const enCarrito = carrito.find(el => el.id == element.id);
 
-        productDiv.innerHTML += `
+            //esta otra la usamos para modificar las cards y agregar la cantidad si el usuario lo agrego al carro
+            const cantidad = enCarrito ? enCarrito.cantidad : 0;
+
+            productDiv.innerHTML += `
             <img src="${element.imagen}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${element.nombre}</h5>
@@ -146,9 +148,10 @@ function renderizarProductos(data) {
                 </div>
         </div>`
 
-        fragment.appendChild(productDiv);
-        //llamamos a la funcion actualizar carrito para que este escuchando los cambios..
-        actualizarCarrito(productDiv, '.btn', element)
+            fragment.appendChild(productDiv);
+            //llamamos a la funcion actualizar carrito para que este escuchando los cambios..
+            actualizarCarrito(productDiv, '.btn', element)
+        }
     }
     );
     productContainer.appendChild(fragment);
@@ -269,8 +272,8 @@ function salir() {
 }
 
 function salirSesion() {
-    const btnSalida =document.getElementById('salirBtn');
-    btnSalida.addEventListener('click',() => salir());
+    const btnSalida = document.getElementById('salirBtn');
+    btnSalida.addEventListener('click', () => salir());
 }
 
 ejecutarInicio();
