@@ -51,7 +51,7 @@
                                     <%= producto.stock %>
                                 </td>
                                 <td>
-                                    <a href="/admin/productos/<%= producto.id %>/editar"
+                                    <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"
                                         class="btn btn-sm btn-warning">Editar</a>
                                     <form action="/api/productos/admin/<%= producto.id %>?_method=DELETE" method="POST"
                                         style="display:inline;">

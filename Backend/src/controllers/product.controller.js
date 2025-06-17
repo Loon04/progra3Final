@@ -31,6 +31,11 @@ export default {
         }
     },
     renderAddProduct: (req, res) => {
-        return res.render("addProducto");
+        return res.status(200).render("addProducto");
+    },
+    renderEditProduct: async (req, res) => {
+        let id = req.params.id;
+        let [producto] = await productService.getById(id);
+        return res.status(200).render("editProducto", { producto });
     }
 }
