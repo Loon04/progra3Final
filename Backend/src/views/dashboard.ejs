@@ -32,6 +32,7 @@
                         <th>Precio</th>
                         <th>Stock</th>
                         <th>Tipo</th>
+                        <th>Imagen</th>
                         <th>Acciones</th>
                         <th>Activo</th>
                     </tr>
@@ -53,6 +54,12 @@
                                 </td>
                                 <td>
                                     <%= producto.tipo %>
+                                </td>
+                                <td>
+                                    <div style="margin-top:8px;">
+                                        <img src="<%= producto.imagen %>" alt="Imagen"
+                                            style="max-width: 120px; border-radius: 6px;">
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"

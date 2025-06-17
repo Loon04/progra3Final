@@ -8,5 +8,6 @@ productoRoutes.delete("/admin/:id", productController.deleteProduct);
 productoRoutes.get("/admin/nuevo", productController.renderAddProduct);
 productoRoutes.post("/admin/nuevo", productController.addProduct);
 productoRoutes.get("/admin/edit/:id", productController.renderEditProduct);
+productoRoutes.put("/admin/edit/:id", productController.editProduct);
 
 export default productoRoutes;

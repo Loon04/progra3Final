@@ -29,7 +29,18 @@ export default {
         try {
             const { nombre, descripcion, precio, stock, imagen, tipo } = bodyProduct;
             const [rows] = await conn.execute("INSERT into productos (nombre, descripcion, precio, stock, imagen,tipo) values(?,?,?,?,?,?)", [nombre, descripcion, precio, stock, imagen, tipo])
-            return rows;
+            if (rows.length > 0) return rows;
+            return null
+        } catch (error) {
+            return error;
+        }
+    },
+    async updateProduct(id, bodyNewProduct) {
+        try {
+            const { nombre, descripcion, precio, stock, imagen, tipo } = bodyNewProduct;
+            const [rows] = await conn.execute("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ?, imagen = ?, tipo = ? WHERE id = ?", [nombre, descripcion, precio, stock, imagen, tipo, id])
+            if (rows.length > 0) return rows;
+            return null
         } catch (error) {
             return error;
         }

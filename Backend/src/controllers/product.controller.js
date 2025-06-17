@@ -40,15 +40,22 @@ export default {
     },
     addProduct: async (req, res) => {
         let bodyProduct = req.body;
-        console.log(bodyProduct);
         let productoCreado = await productService.createProduct(bodyProduct);
-        console.log(productoCreado);
         if (productoCreado) {
             return res.status(201).redirect("/api/usuarios/admin/dashboard");
         } else {
             return res.status(500).send("Error en la base de datos");
         }
-
-
+    },
+    editProduct: async (req, res) => {
+        let bodyNewProduct = req.body;
+        let id = req.params.id;
+        let productoModificado = await productService.updateProduct(id, bodyNewProduct);
+        if (productoModificado) {
+            return res.status(200).redirect("/api/usuarios/admin/dashboard");
+        } else {
+            return res.status(500).send("Error en la base de datos");
+        }
     }
+
 }

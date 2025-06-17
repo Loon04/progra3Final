@@ -15,5 +15,8 @@ export default {
     },
     createProduct: async (bodyProduct) => {
         return ProductDao.createProduct(bodyProduct);
+    },
+    updateProduct: async (id, bodyNewProduct) => {
+        return ProductDao.updateProduct(id, bodyNewProduct);
     }
 }
