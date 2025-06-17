@@ -18,5 +18,8 @@ export default {
     },
     updateProduct: async (id, bodyNewProduct) => {
         return ProductDao.updateProduct(id, bodyNewProduct);
+    },
+    getInactivos: async () => {
+        return ProductDao.obtenerInactivos();
     }
 }

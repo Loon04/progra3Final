@@ -56,6 +56,10 @@ export default {
         } else {
             return res.status(500).send("Error en la base de datos");
         }
+    },
+    renderInactives: async (req, res) => {
+        let productos = await productService.getInactivos();
+        return res.render("inactive", { productos });
     }
 
 }

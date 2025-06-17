@@ -68,7 +68,8 @@ body {
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: all 0.2s, transform 0.1s;
+    margin: 0.1rem;
 }
 
 .btn:hover {
