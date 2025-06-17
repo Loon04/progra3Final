@@ -48,7 +48,6 @@ export default {
     async obtenerInactivos() {
         try {
             const [rows] = await conn.query("SELECT * FROM productos WHERE activo=0")
-            console.log(rows);
             if (rows.length > 0) return rows;
             return null
         } catch (error) {

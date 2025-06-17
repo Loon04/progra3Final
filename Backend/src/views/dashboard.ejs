@@ -49,51 +49,55 @@
                 <tbody>
                     <% if (productos && productos.length> 0) { %>
                         <% productos.forEach(producto=> { %>
-                            <tr>
-                                <td>
-                                    <%= producto.id %>
-                                </td>
-                                <td>
-                                    <%= producto.nombre %>
-                                </td>
-                                <td>$<%= producto.precio %>
-                                </td>
-                                <td>
-                                    <%= producto.stock %>
-                                </td>
-                                <td>
-                                    <%= producto.tipo %>
-                                </td>
-                                <td>
-                                    <div style="margin-top:8px;">
-                                        <img src="<%= producto.imagen %>" alt="Imagen"
-                                            style="max-width: 120px; border-radius: 6px;">
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"
-                                        class="btn btn-sm btn-warning">Editar</a>
-                                    <form action="/api/productos/admin/<%= producto.id %>?_method=DELETE" method="POST"
-                                        style="display:inline;">
-                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="/api/productos/admin/<%= producto.id %>?_method=PUT" method="POST"
-                                        style="display:inline;">
-                                        <button type="submit"
-                                            class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
-                                            <%= producto.activo ? 'Desactivar' : 'Activar' %>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <% }) %>
-                                <% } else { %>
-                                    <tr>
-                                        <td colspan="5" style="text-align:center;">No hay productos cargados.</td>
-                                    </tr>
-                                    <% } %>
+                            <% if(producto.activo===1){ %>
+
+                                <tr>
+                                    <td>
+                                        <%= producto.id %>
+                                    </td>
+                                    <td>
+                                        <%= producto.nombre %>
+                                    </td>
+                                    <td>$<%= producto.precio %>
+                                    </td>
+                                    <td>
+                                        <%= producto.stock %>
+                                    </td>
+                                    <td>
+                                        <%= producto.tipo %>
+                                    </td>
+                                    <td>
+                                        <div style="margin-top:8px;">
+                                            <img src="<%= producto.imagen %>" alt="Imagen"
+                                                style="max-width: 120px; border-radius: 6px;">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"
+                                            class="btn btn-sm btn-warning">Editar</a>
+                                        <form action="/api/productos/admin/<%= producto.id %>?_method=DELETE"
+                                            method="POST" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/api/productos/admin/<%= producto.id %>?_method=PUT" method="POST"
+                                            style="display:inline;">
+                                            <button type="submit"
+                                                class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
+                                                <%= producto.activo ? 'Desactivar' : 'Activar' %>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% }) %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="5" style="text-align:center;">No hay productos cargados.
+                                                </td>
+                                            </tr>
+                                            <% } %>
                 </tbody>
             </table>
         </section>
