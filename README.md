@@ -48,21 +48,23 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    git clone https://github.com/lucas22-f/progra3Final.git
    cd progra3Final
    ```
+   - Abrir archivo index.html con live Server O Utilizar deploy de vercel -> link a la derecha 
 --- 
 ## ( Servidor todavia en desarrollo ).
 
 2. **Instalar dependencias:**
    ```bash
+   cd \Backend
    npm install
    ```
-   Configurar la base de datos en `src/database/connection.js`.
-
+   Importar base de datos en XAMP y agregar sus credenciales en el archivo `src/database/dbConfig.js`.
 
 
 
 3. **Iniciar el servidor:**
    ```bash
-   npm start
+   cd \Backend
+   npm run dev
    ```
 
 4. **Acceder:**
