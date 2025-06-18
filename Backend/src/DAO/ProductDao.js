@@ -22,8 +22,9 @@ export default {
     },
 
     async delete(id) {
-        const [rows] = await conn.execute("DELETE from productos WHERE id = ?", [id]);
-        return rows; //un objeto con info del cambio. No es como el rows de getAll(). Tambien tiene el segundo obj. Desestructurar
+        const [result] = await conn.execute("DELETE from productos WHERE id = ?", [id]); //un objeto con una confirmacion tecnica
+        return result.affectedRows; //. Si encontro el id devuelve 1 sino 0. La validacion esta en el controlador. 
+        // No es como el rows de getAll(). Tambien tiene el segundo obj(metadatos). Desestructurar.
     },
     async createProduct(bodyProduct) {
         try {
