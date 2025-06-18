@@ -3,6 +3,14 @@ import routerConfig from "./routes/index.routes.js";
 import cors from "cors";
 import { join, __dirname } from "./utils/utils.js";
 import methodOverride from "method-override";
+import dotenv from "dotenv";
+dotenv.config({ path: './src/.env' });
+import sequelize from "./database/dbConfig.js";
+import "./models/Producto.js"
+import "./models/Venta.js";
+import "./models/relaciones.js";
+import "./models/Usuario.js";
+
 
 // middlewares
 const configBasicaAPI = (app) => {
@@ -10,6 +18,7 @@ const configBasicaAPI = (app) => {
     app.use(express.json()); // pueda recibir jsons
     app.use(methodOverride('_method')); //para que en html se pueda usar PUT y DELETE
     app.use(cors());
+
 }
 const configuracionRouter = (app) => { // configuracion de las rutas 
     app.use("/api/", routerConfig.rutas_init())
@@ -22,16 +31,20 @@ const configuracionMotorPlantillas = (app) => { // configuracion de motor de pla
     app.set("views", join(__dirname, "views"));
 }
 
-const init = () => {
+const init = async () => {
     const app = express();
 
     configBasicaAPI(app);
     configuracionMotorPlantillas(app);
     configuracionStatic(app);
     configuracionRouter(app);
-
-    const PORT = 5000;
-    app.listen(PORT, () => console.log(`servidor corriendo en : http://localhost:${PORT}`));
+    try {
+        await sequelize.sync()
+        const PORT = 5000;
+        app.listen(PORT, () => console.log(`servidor corriendo en : http://localhost:${PORT}`));
+    } catch (error) {
+        console.log("Error al sincronizar la bd", error);
+    }
 
 }
 init();
