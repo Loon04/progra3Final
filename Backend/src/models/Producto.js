@@ -9,7 +9,7 @@ const Producto = sequelize.define('Producto', {
     stock: { type: DataTypes.INTEGER, allowNull: false },
     imagen: { type: DataTypes.STRING },
     tipo: { type: DataTypes.STRING, allowNull: false },
-    activo: { type: DataTypes.SMALLINT }
+    activo: { type: DataTypes.SMALLINT, defaultValue: 1 }
 }, {
     tableName: "productos",
     timestamps: false

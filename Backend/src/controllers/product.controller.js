@@ -1,12 +1,12 @@
 import productService from "../services/product.service.js"
 
-export default { 
+export default {
     deleteProduct: async (req, res) => {
         const id = req.params.id;
         try {
             const resultado = await productService.deleteProduct(id);
             if (resultado === 0) { //si el resultado es 0 no encontro el id
-                return res.status(404).json({mensaje: "producto no encontrado"});
+                return res.status(404).json({ mensaje: "producto no encontrado" });
             }
             return res.redirect("/api/usuarios/admin/dashboard");
         } catch (error) {
@@ -16,16 +16,17 @@ export default {
     updateProductActive: async (req, res) => {
         let id = req.params.id;
         try {
-            const [product] = await productService.getById(id) //para saber en que estado esta el producto 
-            //console.log(product); //desestructurar el array para tener el objeto
-            if (!product) return res.status(404).send("Producto no encontrado");
-
-            const nuevoEstado = product.activo ? 0 : 1; //es un if
-            await productService.putProduct(id, { activo: nuevoEstado });
-
-            return res.redirect("/api/usuarios/admin/dashboard");
+            const product = await productService.getById(id) // obtenemos el producto para checkear que exista
+            product.toJSON(); // parseamos para obtener solo el objeto
+            if (!product) return res.status(404).send("Producto no encontrado");// si no lo encontramos ERR 400
+            const nuevoEstado = product.activo ? 0 : 1; //aca cambiamos el estado dependiendo en que esta es como un toggle
+            const actualizado = await productService.putProduct(id, { activo: nuevoEstado });//actualizamos
+            if (actualizado) {//si logra actualizar redirige al dashboard
+                return res.redirect("/api/usuarios/admin/dashboard");
+            } else {//si no error 500 de la bd
+                return res.status(500).send("No se pudo actualizar el producto.");
+            }
         } catch (error) {
-            console.error(error);
             return res.status(500).send("Error en la base de datos.");
         }
     },

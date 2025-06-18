@@ -24,7 +24,7 @@ export default {
     renderDashboard: async (req, res) => {
 
         let productos = await productService.getProducts();
-
+        console.log(productos);
         return res.status(200).render("dashboard", { productos });
 
     },

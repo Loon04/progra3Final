@@ -1,25 +1,25 @@
-import ProductDao from "../repository/ProductDao.js";
+import ProductRepo from "../repository/ProductRepository.js";
 
 export default {
     getProducts: () => {
-        return ProductDao.getAll();
+        return ProductRepo.getAll();
     },
     getById: (id) => {
-        return ProductDao.getById(id);
+        return ProductRepo.getById(id);
     },
-    putProduct: (id, campos) => {
-        return ProductDao.update(id, campos);
+    putProduct: (id, estado) => {
+        return ProductRepo.updateProductActive(id, estado);
     },
     deleteProduct: (id) => {
-        return ProductDao.delete(id);
+        return ProductRepo.delete(id);
     },
     createProduct: async (bodyProduct) => {
-        return ProductDao.createProduct(bodyProduct);
+        return ProductRepo.createProduct(bodyProduct);
     },
     updateProduct: async (id, bodyNewProduct) => {
-        return ProductDao.updateProduct(id, bodyNewProduct);
+        return ProductRepo.updateProduct(id, bodyNewProduct);
     },
     getInactivos: async () => {
-        return ProductDao.obtenerInactivos();
+        return ProductRepo.obtenerInactivos();
     }
 }
