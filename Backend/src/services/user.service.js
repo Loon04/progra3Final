@@ -1,4 +1,4 @@
-import UserDao from "../DAO/UserDao.js";
+import UserRepo from "../repository/UserRepository.js";
 
 export default {
     getUserLogin: (req) => {
@@ -8,9 +8,9 @@ export default {
         return req.body;
     },
     loginUser: async (reqUser) => {
-        return UserDao.getUserLogin(reqUser);
+        return UserRepo.getUserLogin(reqUser);
     },
     getFastUser: async () => {
-        return UserDao.getFastUser();
+        return UserRepo.getFastUser();
     }
 }

@@ -1,4 +1,4 @@
-import ProductDao from "../DAO/ProductDao.js";
+import ProductDao from "../repository/ProductDao.js";
 
 export default {
     getProducts: () => {
