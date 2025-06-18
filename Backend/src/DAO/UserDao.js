@@ -1,20 +1,21 @@
-import conn from "../database/dbConfig.js";
-
-
+import Usuario from "../models/Usuario.js";
 
 export default {
 
     async getUserLogin(user) {
-        const [rows] = await conn.execute("SELECT * from usuarios WHERE username = ? AND password = ?", [user.username, user.password]);
-        if (rows.length > 0) {
-            return rows;
-        }
-        return null;
+        // const [rows] = await conn.execute("SELECT * from usuarios WHERE username = ? AND password = ?", [user.username, user.password]);
+        let usuario = await Usuario.findOne({
+            where: {
+                username: user.username,
+                password: user.password,
+            }
+        })
+
+        return usuario || null;
     },
     async getFastUser() {
-        const [user] = await conn.query("SELECT * from usuarios LIMIT 1");
-        if (user) return user[0];
-        return null;
+        const usuario = await Usuario.findOne();
+        return usuario || null;
     }
 
 
