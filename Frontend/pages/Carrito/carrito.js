@@ -120,10 +120,10 @@ function restarCantidad(producto, carrito) {
     renderizarProductosCarrito(carrito)
 }
 
-function finalizarCompra(carrito) {
+function finalizarCompra (carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
-    btnFinalizarCompra.addEventListener('click', () => {
-
+    btnFinalizarCompra.addEventListener('click', async() => {
+        await guardarInfoVenta(carrito)
         generarTicket(carrito)
     });
 }
@@ -184,9 +184,45 @@ function generarTicket(carrito) {
     sessionStorage.setItem('ticketPDF', pdfBase64);
 
     setTimeout(() => {
+        //await guardarInfoVenta(carrito);
         window.location.href = "../Ticket/ticket.html";
-    }, 1000);
+    }, 4000);
 }
+
+function calcularTotal(carrito) {
+    let total = 0;
+
+    carrito.forEach(producto => {
+        const precio = +producto.precio || 0;
+        const cantidad = +producto.cantidad || 0;
+        total += precio * cantidad;
+    });
+    return total;
+}
+
+async function guardarInfoVenta(carrito) {
+    try {
+    const nombreUsuario = getElemento('usuario');
+    const total = calcularTotal(carrito);
+
+    const payload = {
+        nombreUsuario,
+        productos: carrito,
+        total: total
+        };
+
+        const res = await fetch("http://localhost:5000/api/venta", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload) //no llegaba a cargar el json
+        });
+        const data = await res.json();
+    console.log(data);
+    } catch (error) {
+    console.error("Error al guardar venta:", error);
+    }
+}
+
 
 function salir() {
     localStorage.removeItem("carrito")
