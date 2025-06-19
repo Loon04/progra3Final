@@ -35,7 +35,8 @@ export default {
     },
     renderEditProduct: async (req, res) => {
         let id = req.params.id;
-        let [producto] = await productService.getById(id);
+        let producto = await productService.getById(id);
+        producto.toJSON();
         return res.status(200).render("editProducto", { producto });
     },
     addProduct: async (req, res) => {
