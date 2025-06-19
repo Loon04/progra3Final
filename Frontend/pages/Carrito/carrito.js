@@ -222,7 +222,8 @@ async function guardarInfoVenta(carrito) {
             throw new Error(err);
         }
         const data = await res.json();
-        document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-success">Compra Realizada✅</div>`;
+        console.log(data);
+        document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-success">Compra Realizada✅ #id_compra: ${data.id_venta}</div>`;
         generarTicket(carrito);
     } catch (error) {
         // Mostrá el error en el DOM
