@@ -125,9 +125,6 @@ function finalizarCompra(carrito) {
     btnFinalizarCompra.addEventListener('click', async () => {
 
         await guardarInfoVenta(carrito)
-        generarTicket(carrito);
-
-
 
     });
 }
@@ -225,7 +222,8 @@ async function guardarInfoVenta(carrito) {
             throw new Error(err);
         }
         const data = await res.json();
-        console.log(data);
+        document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-success">Compra Realizada✅</div>`;
+        generarTicket(carrito);
     } catch (error) {
         // Mostrá el error en el DOM
         document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
