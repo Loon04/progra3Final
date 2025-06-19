@@ -120,11 +120,15 @@ function restarCantidad(producto, carrito) {
     renderizarProductosCarrito(carrito)
 }
 
-function finalizarCompra (carrito) {
+function finalizarCompra(carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
-    btnFinalizarCompra.addEventListener('click', async() => {
+    btnFinalizarCompra.addEventListener('click', async () => {
+
         await guardarInfoVenta(carrito)
-        generarTicket(carrito)
+        generarTicket(carrito);
+
+
+
     });
 }
 
@@ -202,13 +206,13 @@ function calcularTotal(carrito) {
 
 async function guardarInfoVenta(carrito) {
     try {
-    const nombreUsuario = getElemento('usuario');
-    const total = calcularTotal(carrito);
+        const nombreUsuario = getElemento('usuario');
+        const total = calcularTotal(carrito);
 
-    const payload = {
-        nombreUsuario,
-        productos: carrito,
-        total: total
+        const payload = {
+            nombreUsuario,
+            productos: carrito,
+            total: total
         };
 
         const res = await fetch("http://localhost:5000/api/venta", {
@@ -216,10 +220,17 @@ async function guardarInfoVenta(carrito) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload) //no llegaba a cargar el json
         });
+        if (!res.ok) {
+            let err = await res.text();
+            throw new Error(err);
+        }
         const data = await res.json();
-    console.log(data);
+        console.log(data);
     } catch (error) {
-    console.error("Error al guardar venta:", error);
+        // Mostrá el error en el DOM
+        document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+        // También podés retornar el error si lo necesitás
+        return { error: error.message };
     }
 }
 
@@ -232,8 +243,8 @@ function salir() {
 }
 
 function salirSesion() {
-    const btnSalida =document.getElementById('salirBtn');
-    btnSalida.addEventListener('click',() => salir());
+    const btnSalida = document.getElementById('salirBtn');
+    btnSalida.addEventListener('click', () => salir());
 }
 
 function cambiadorTema() {
