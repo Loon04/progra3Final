@@ -14,7 +14,6 @@ function obtenerUsuarioYcargar() { // funcion principal del index donde iniciali
 
     const btnLogin = document.getElementById('boton-admin')
     btnLogin.addEventListener('click', () => {
-        console.log("ogrgmreok");
         loadAdminSystem();
 
     });
