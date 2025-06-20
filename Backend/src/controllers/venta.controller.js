@@ -38,5 +38,15 @@ export default {
       console.error("Error al crear venta:", error);
       return res.status(500).send("Error en la base de datos");
     }
+  },
+  renderVentas: async (req, res) => {
+    let ventas = (await Venta.findAll({
+      include: {
+        model: Producto,
+        through: { attributes: ['cantidad'] }
+      }
+    })).map(venta => venta.toJSON());
+    console.log(ventas[0].Productos);
+    res.render("ventas", { ventas });
   }
 }

@@ -69,7 +69,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s, transform 0.1s;
-    margin: 0.1rem;
+    margin: 0.5rem;
 }
 
 .btn:hover {
@@ -85,6 +85,14 @@ body {
 .btn-warning {
     background: #ffd83e;
     color: #2d3e50;
+}
+
+.btn-ventas {
+    background: #0e9610;
+}
+
+.btn-ventas:hover {
+    background: #24ce27;
 }
 
 .btn-warning:hover {

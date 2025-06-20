@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/colorVenta.css">
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <div>
+            <h1>Tech Store</h1>
+            <h5>Ventas</h3>
+                <div>
+                    <img src="/img/logo.png" alt="Imagen" style="max-width: 70px; border-radius: 6px;">
+                </div>
+
+        </div>
+        <div>
+            <a href="/api/usuarios/admin/dashboard" class="btn-logout">Volver</a>
+        </div>
+    </header>
+    <div class="container mt-4">
+        <h1 class="mb-4">Listado de Ventas</h1>
+        <% if (ventas && ventas.length) { %>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Productos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% ventas.forEach(venta=> { %>
+                        <tr>
+                            <td>
+                                <%= venta.id %>
+                            </td>
+                            <td>
+                                <%= venta.nombreUsuario %>
+                            </td>
+                            <td>
+                                <%= venta.fecha ? venta.fecha.toLocaleString ? venta.fecha.toLocaleString() :
+                                    venta.fecha : '' %>
+                            </td>
+                            <td>$<%= venta.total %>
+                            </td>
+                            <td>
+                                <ul class="mb-0">
+                                    <% if (venta.Productos && venta.Productos.length) { %>
+                                        <% venta.Productos.forEach(prod=> { %>
+                                            <li>
+                                                <strong>
+                                                    <%= prod.nombre %>
+                                                </strong>
+                                                (Cantidad: <%= prod.productos_ventas ? prod.productos_ventas.cantidad :
+                                                    prod.cantidad %>)
+                                            </li>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <li>No hay productos</li>
+                                                    <% } %>
+                                </ul>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <div class="alert alert-info">No hay ventas registradas.</div>
+                <% } %>
+    </div>
+</body>
+
+</html>
