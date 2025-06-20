@@ -186,6 +186,8 @@ function generarTicket(carrito) {
 
     setTimeout(() => {
         //await guardarInfoVenta(carrito);
+        carrito.length = 0;
+        renderizarProductosCarrito(carrito);
         window.location.href = "../Ticket/ticket.html";
     }, 4000);
 }
@@ -221,6 +223,7 @@ async function guardarInfoVenta(carrito) {
             let err = await res.text();
             throw new Error(err);
         }
+
         const data = await res.json();
         console.log(data);
         document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-success">Compra Realizada✅ #id_compra: ${data.id_venta}</div>`;
