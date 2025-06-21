@@ -12,5 +12,8 @@ export default {
     },
     getFastUser: async () => {
         return UserRepo.getFastUser();
+    },
+    registerAdmin: async (user) => {
+        return UserRepo.registerAdmin(user);
     }
 }

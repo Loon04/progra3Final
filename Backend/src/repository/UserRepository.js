@@ -16,6 +16,13 @@ export default {
     async getFastUser() {
         const usuario = await Usuario.findOne();
         return usuario || null;
+    },
+    async registerAdmin(user) {
+        let username = user.username;
+        let password = user.password;
+        const adminUser = await Usuario.create({ username, password });
+
+        return adminUser || null;
     }
 
 

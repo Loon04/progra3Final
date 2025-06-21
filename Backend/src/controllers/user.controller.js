@@ -32,6 +32,23 @@ export default {
         if (user) return res.status(200).send(user);
         return res.status(401);
 
+    },
+    registerAdmin: async (req, res) => {
+        const reqUser = req.body;
+        try {
+            let userAdmin = await userService.registerAdmin(reqUser);
+            if (userAdmin) {
+                return res.status(200).redirect("/api/usuarios/admin/login");
+
+            } else {
+                return res.status(500).json({ message: "error" });
+            }
+        } catch (error) {
+        }
+
+    },
+    renderRegister: async (req, res) => {
+        res.render("register");
     }
 
 
