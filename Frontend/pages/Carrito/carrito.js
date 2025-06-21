@@ -254,6 +254,8 @@ function cambiadorTema() {
     const body = document.getElementsByTagName("body")[0];
     const headerContainer = document.getElementsByTagName("header")[0];
     const footer = document.getElementsByTagName("footer")[0];
+    const modal = document.getElementsByClassName("modal-content")[0];
+    const sectionCart = document.getElementsByClassName("section-cart")[0];
     const temaGuardado = localStorage.getItem("tema");
 
     if (temaGuardado === "true") {
@@ -261,12 +263,16 @@ function cambiadorTema() {
         body.classList.add("darkLinks");
         headerContainer.classList.add("darkHeader");
         footer.classList.add("darkFooter");
+        modal.classList.add("darkModal");
+        sectionCart.classList.add("darkSectionCart");
         btnTema.innerHTML = `<i class="fa-solid fa-sun fa-lg"></i> Tema`;
     } else {
         body.classList.remove("dark");
         body.classList.remove("darkLinks")
         headerContainer.classList.remove("darkHeader");
         footer.classList.remove("darkFooter");
+        modal.classList.remove("darkModal");
+        sectionCart.classList.remove("darkSectionCart");
         btnTema.innerHTML = `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
     }
 
@@ -278,6 +284,8 @@ function cambiadorTema() {
         body.classList.toggle("darkLinks");
         headerContainer.classList.toggle("darkHeader");
         footer.classList.toggle("darkFooter");
+        modal.classList.toggle("darkModal");
+        sectionCart.classList.toggle("darkSectionCart");
         localStorage.setItem("tema", darkMode);
     });
 }

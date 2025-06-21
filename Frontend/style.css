@@ -74,6 +74,7 @@ a,
 
 .footerUni {
     margin-top: auto;
+    background-color: #f8f9fa;
 }
 
 .formInicio {
@@ -194,14 +195,20 @@ a,
     color: #7BBEFE;
 }
 
-.darkfooter {
+.darkModal {
     background-color: #2e4153;
-    border-color: #303436;
+    border-color: rgb(122, 118, 118) !important;
+    color: #e8e6e3;
 }
 
-.darkHeader {
+.modal-header,
+.modal-footer {
+    border-color: rgb(122, 118, 118) !important;
+}
+
+.darkSectionCart, .darkFooter, .darkHeader {
     background-color: #2e4153;
-    border-color: #303436;
+    border-color: #303436 !important;
 }
 
 .price-cont {
