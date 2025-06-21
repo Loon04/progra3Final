@@ -48,5 +48,15 @@ export default {
     })).map(venta => venta.toJSON());
     console.log(ventas[0].Productos);
     res.render("ventas", { ventas });
+  },
+  getAllVentas: async (req, res) => {
+    let ventas = (await Venta.findAll({
+      include: {
+        model: Producto,
+        through: { attributes: ['cantidad'] }
+      }
+    })).map(venta => venta.toJSON());
+
+    res.status(200).json({ ventas });
   }
 }
