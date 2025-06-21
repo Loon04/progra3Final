@@ -48,5 +48,14 @@ export default {
         } catch (error) {
             return error;
         }
+    },
+    async getPaginationProducts(page, pageSize) {
+        const offset = (page - 1) * pageSize; // offset es para saber desde donde empezar a mostrar
+        const limit = pageSize;
+
+        return await Producto.findAndCountAll({
+            limit,
+            offset
+        })
     }
 }

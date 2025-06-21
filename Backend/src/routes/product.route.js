@@ -12,5 +12,6 @@ productoRoutes.put("/admin/edit/:id", productController.editProduct);
 
 productoRoutes.get("/admin/inactives", productController.renderInactives);
 productoRoutes.get("/all", productController.getAll);
+productoRoutes.get("/", productController.getPagination);
 
 export default productoRoutes;

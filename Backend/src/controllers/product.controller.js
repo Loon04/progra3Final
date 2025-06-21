@@ -65,6 +65,14 @@ export default {
     getAll: async (req, res) => {
         let productos = await productService.getProducts();
         return res.status(200).json(productos);
+    },
+    getPagination: async (req, res) => {
+        let page = parseInt(req.query.page) || 1;
+        const pageTam = 3;
+
+        const { count, rows } = await productService.getPaginationProducts(page, pageTam);
+
+        return res.status(200).json({ items: rows, totalItems: count, currentPage: page, totalPages: Math.ceil(count / pageTam) });
     }
 
 }

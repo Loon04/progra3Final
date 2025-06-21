@@ -21,5 +21,8 @@ export default {
     },
     getInactivos: async () => {
         return ProductRepo.obtenerInactivos();
+    },
+    getPaginationProducts: async (page, pageSize) => {
+        return ProductRepo.getPaginationProducts(page, pageSize);
     }
 }
