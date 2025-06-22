@@ -125,17 +125,17 @@ function finalizarCompra(carrito) {
     btnFinalizarCompra.addEventListener('click', async () => {
 
         await guardarInfoVenta(carrito)
-
     });
 }
 
-function generarTicket(carrito) {
+function generarTicket(carrito, data) {
     //uso un CND en carrito.html. En la parte de carrito creamos el pdf y deberiamos borrar el carrito(al menos)
     //Uso jsPDF que es el constructor de PDFs
     //Funciona como pygame con posiciones en la hoja a4 predeterminada
     //por ahora el paso a ticket.html esta acá porque no se descargaba el archivo pdf por el tiempo de carga
     //es un canvas
     const usuario = getElemento('usuario');
+    idCompra = data.id_venta;
     let totalCompra = 0;
     let cadena = '*';
     let precioX = 140;
@@ -148,8 +148,10 @@ function generarTicket(carrito) {
 
     pdf.text(`Comprador ${usuario}`, 10, 30)
 
-    const fechaActual = new Date().toLocaleDateString();
-    const horaActual = new Date().toLocaleTimeString();
+    const fechaActual = new Date().toLocaleDateString(); //dia/mes/año
+    const horaActual = new Date().toLocaleTimeString([], { //24 horas
+    hour12: false
+    });
 
     pdf.text(`Fecha ${fechaActual} - Hora ${horaActual}`, 10, 40)
 
@@ -181,8 +183,9 @@ function generarTicket(carrito) {
     //lo guarda en el SesionStorage esto para que si el usuario completa la compra se borre para que no
     //tenga problemas al generar otro ticket si sigue en la sesion
     //Lo voy a usar para pasarle al <iframe> en el src="" que seria la ruta en donde esta el pdf
-    const pdfBase64 = pdf.output('datauristring');
-    sessionStorage.setItem('ticketPDF', pdfBase64);
+    const pdfBase64 = pdf.output('datauristring'); 
+    sessionStorage.setItem('ticketPDF', pdfBase64); //se guarda aca
+    sessionStorage.setItem('nombre_PDF', idCompra);
 
     setTimeout(() => {
         //await guardarInfoVenta(carrito);
@@ -227,7 +230,7 @@ async function guardarInfoVenta(carrito) {
         const data = await res.json();
         console.log(data);
         document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-success">Compra Realizada✅ #id_compra: ${data.id_venta}</div>`;
-        generarTicket(carrito);
+        generarTicket(carrito, data);
     } catch (error) {
         // Mostrá el error en el DOM
         document.getElementById('mensaje-error').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;

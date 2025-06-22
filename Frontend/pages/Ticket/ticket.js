@@ -12,6 +12,7 @@ function iniciarTicket() {
 
 function mostarTicket() {
     const uriPDF = sessionStorage.getItem('ticketPDF');
+    const idCompra = sessionStorage.getItem('nombre_PDF');
     const contenedorPDF = document.getElementById('contenedor-pdf')
 
     const divPDF = document.createElement('div');
@@ -25,7 +26,7 @@ function mostarTicket() {
     btnDescargar.addEventListener('click', () => {
         const link = document.createElement("a");
         link.href = uriPDF;
-        link.download = "ticket.pdf";
+        link.download = `TecStore_ID${idCompra}.pdf`;
         link.click();
     });
 
