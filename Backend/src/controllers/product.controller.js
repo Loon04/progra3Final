@@ -6,11 +6,11 @@ export default {
         try {
             const resultado = await productService.deleteProduct(id);
             if (resultado === 0) { //si el resultado es 0 no encontro el id
-                return res.status(404).json({ mensaje: "producto no encontrado" });
+                return res.status(404).json({ mensaje: "producto no encontrado." });
             }
             return res.redirect("/api/usuarios/admin/dashboard");
         } catch (error) {
-            return res.status(500).json({ mensaje: "Error en la base de datos" });
+            return res.status(500).json({ mensaje: "Error en la base de datos." });
         }
     },
     updateProductActive: async (req, res) => {
@@ -18,13 +18,13 @@ export default {
         try {
             const product = await productService.getById(id) // obtenemos el producto para checkear que exista
             product.toJSON(); // parseamos para obtener solo el objeto
-            if (!product) return res.status(404).send("Producto no encontrado");// si no lo encontramos ERR 400
+            if (!product) return res.status(404).json({ mensaje: "producto no encontrado." });// si no lo encontramos ERR 400
             const nuevoEstado = product.activo ? 0 : 1; //aca cambiamos el estado dependiendo en que esta es como un toggle
             const actualizado = await productService.putProduct(id, { activo: nuevoEstado });//actualizamos
             if (actualizado) {//si logra actualizar redirige al dashboard
                 return res.redirect("/api/usuarios/admin/dashboard");
             } else {//si no error 500 de la bd
-                return res.status(500).send("No se pudo actualizar el producto.");
+                return res.status(500).json({ mensaje: "No se pudo actualizar el producto." });
             }
         } catch (error) {
             return res.status(500).send("Error en la base de datos.");
@@ -41,21 +41,32 @@ export default {
     },
     addProduct: async (req, res) => {
         let bodyProduct = req.body;
-        let productoCreado = await productService.createProduct(bodyProduct);
-        if (productoCreado) {
-            return res.status(201).redirect("/api/usuarios/admin/dashboard");
-        } else {
-            return res.status(500).send("Error en la base de datos");
+        try {
+            let productoCreado = await productService.createProduct(bodyProduct);
+            
+            if (productoCreado) {
+                return res.status(200).redirect("/api/usuarios/admin/dashboard");
+            } else {
+                return res.status(500).json({ mensaje: "Error en la base de datos." });
+            }
+        } catch (error) {
+            console.error("Error al crear producto:", error);
+            return res.status(500).json({ mensaje: "Error en la base de datos" });
         }
     },
     editProduct: async (req, res) => {
         let bodyNewProduct = req.body;
         let id = req.params.id;
-        let productoModificado = await productService.updateProduct(id, bodyNewProduct);
-        if (productoModificado) {
-            return res.status(200).redirect("/api/usuarios/admin/dashboard");
-        } else {
-            return res.status(500).send("Error en la base de datos");
+        try {
+            let productoModificado = await productService.updateProduct(id, bodyNewProduct);
+            if (productoModificado) {
+                return res.status(200).redirect("/api/usuarios/admin/dashboard");
+            } else {
+                return res.status(500).json({ mensaje: "Error en la base de datos." });
+            }
+        } catch (error) {
+            console.error("Error al editar producto:", error);
+            return res.status(500).json({ mensaje: "Error en la base de datos." });
         }
     },
     renderInactives: async (req, res) => {

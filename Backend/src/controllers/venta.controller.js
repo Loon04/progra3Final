@@ -9,7 +9,7 @@ export default {
         const producto = await Producto.findByPk(item.id);
 
         if (producto.stock < item.cantidad) { //solo para el uso de prueba, se tiene que arreglar en el front
-          return res.status(400).send(`Stock insuficiente para ${producto.nombre}`);
+          return res.status(400).json({mensaje: `Stock insuficiente para ${producto.nombre}`});
         }
       }
 
@@ -33,11 +33,12 @@ export default {
         await nuevaVenta.addProducto(producto, { through: { cantidad: item.cantidad } });
 
       }
-      return res.status(201).json({ message: "Exito al crear venta", id_venta: nuevaVenta.id });
+      return res.status(201).json({ mensaje: "Exito al crear venta", id_venta: nuevaVenta.id });
     } catch (error) {
       console.error("Error al crear venta:", error);
-      return res.status(500).send("Error en la base de datos");
+      return res.status(500).json({mensaje: "Error en la base de datos."});
     }
+
   },
   renderVentas: async (req, res) => {
     let ventas = (await Venta.findAll({
@@ -48,6 +49,7 @@ export default {
     })).map(venta => venta.toJSON());
     console.log(ventas[0].Productos);
     res.render("ventas", { ventas });
+
   },
   getAllVentas: async (req, res) => {
     let ventas = (await Venta.findAll({

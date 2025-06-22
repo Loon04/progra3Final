@@ -28,9 +28,15 @@ export default {
 
     },
     fastAcces: async (req, res) => {
-        let user = await userService.getFastUser();
-        if (user) return res.status(200).send(user);
-        return res.status(401);
+        try {
+            let user = await userService.getFastUser();
+            if (user) return res.status(200).send(user);
+
+            return res.status(401).json({mensaje: "Acceso no autorizado"});
+        } catch (error){
+            console.error("Error en fastAcces:", error);
+            return res.status(500).json({mensaje: "Error en la base de datos."});
+        }
 
     },
     registerAdmin: async (req, res) => {
@@ -38,20 +44,21 @@ export default {
         try {
             let userAdmin = await userService.registerAdmin(reqUser);
             if (userAdmin) {
+                // Si todo salió bien, redirige al login de admin
                 return res.status(200).redirect("/api/usuarios/admin/login");
 
             } else {
                 return res.status(500).json({ message: "error" });
             }
         } catch (error) {
+            console.error('Error al registrar administrador:', error);
+            return res.status(500).json({ message: "Error en la base de datos." });
         }
 
     },
     renderRegister: async (req, res) => {
         res.render("register");
     }
-
-
 
 
 }
