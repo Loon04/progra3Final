@@ -42,6 +42,7 @@ export default {
     addProduct: async (req, res) => {
         let bodyProduct = req.body;
         try {
+            if (req.file) bodyProduct.imagen = req.file.filename; //agrego el nombre de la imagen al body
             let productoCreado = await productService.createProduct(bodyProduct);
             
             if (productoCreado) {

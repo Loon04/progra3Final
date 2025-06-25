@@ -12,7 +12,7 @@
 <body>
     <div class="container-add-producto">
         <h2>Agregar nuevo producto</h2>
-        <form action="/api/productos/admin/nuevo" method="POST" class="form-add-producto">
+        <form action="/api/productos/admin/nuevo" method="POST" class="form-add-producto" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="imagen">Imagen</label>
-                <input type="file" id="imagen" name="imagen">
+                <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
             <div class="form-group">
                 <label for="tipo">Tipo:</label>
