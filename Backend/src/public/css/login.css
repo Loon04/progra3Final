@@ -83,9 +83,32 @@ body {
     margin-top: 0.5rem;
 }
 
+a {}
+
+.btn-register {
+    width: 100%;
+    display: block;
+    margin: 0;
+
+    text-decoration: none;
+    background: #952cec;
+    line-height: 2.71rem;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+
 .btn-login:hover,
-.btn-acces:hover {
-    background: #1b4fa0;
+.btn-acces:hover,
+.btn-register:hover {
+    background: #1b4ca0dc;
     transform: translateY(-2px) scale(1.03);
 }
 
