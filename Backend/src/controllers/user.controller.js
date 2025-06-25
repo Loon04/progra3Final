@@ -14,12 +14,12 @@ export default {
         if (systemUser) {
             return res.redirect("/api/usuarios/admin/dashboard");
         } else {
-            return res.status(401).render("login", { error: "Usuario o contraseña incorrectos" });
+            return res.status(401).render("login", { error: "Usuario o contraseña incorrectos", errores: [] });
         }
 
     },
     renderLogin: (req, res) => {
-        res.status(200).render("login");
+        res.status(200).render("login", { error: null, errores: [] });
     },
     renderDashboard: async (req, res) => {
 
@@ -28,15 +28,11 @@ export default {
 
     },
     fastAcces: async (req, res) => {
-        try {
-            let user = await userService.getFastUser();
-            if (user) return res.status(200).send(user);
 
-            return res.status(401).json({mensaje: "Acceso no autorizado"});
-        } catch (error){
-            console.error("Error en fastAcces:", error);
-            return res.status(500).json({mensaje: "Error en la base de datos."});
-        }
+        const user = { username: "admin", password: "admin" }
+
+        return res.status(200).send(user);
+
 
     },
     registerAdmin: async (req, res) => {
@@ -57,7 +53,7 @@ export default {
 
     },
     renderRegister: async (req, res) => {
-        res.render("register");
+        res.render("register", { error: null, errores: [] });
     }
 
 

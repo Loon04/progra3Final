@@ -16,10 +16,6 @@ export default {
 
         return userEncontrado || null;
     },
-    async getFastUser() {
-        const usuario = await Usuario.findOne();
-        return usuario || null;
-    },
     async registerAdmin(user) {
         let username = user.username;
         let pass = user.password;
