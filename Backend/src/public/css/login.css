@@ -83,13 +83,10 @@ body {
     margin-top: 0.5rem;
 }
 
-a {}
-
 .btn-register {
     width: 100%;
     display: block;
     margin: 0;
-
     text-decoration: none;
     background: #952cec;
     line-height: 2.71rem;
