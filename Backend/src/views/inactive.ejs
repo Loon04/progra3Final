@@ -34,7 +34,7 @@
             <% if (productos && productos.length> 0) { %>
                 <% productos.forEach(producto=> { %>
                     <div class="card" style="width: 18rem;">
-                        <img src=<%=producto.imagen %> class="card-img-top" alt="...">
+                        <img src="/img/imgProductos/<%= producto.imagen %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%=producto.nombre%>
