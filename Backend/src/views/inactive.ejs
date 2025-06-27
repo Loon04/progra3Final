@@ -12,20 +12,12 @@
 </head>
 
 <body>
-    <header class="dashboard-header">
-        <div>
-            <h1>Tech Store</h1>
-            <h5>Inactivos</h3>
-                <div>
-                    <img src="/img/logo.png" alt="Imagen" style="max-width: 70px; border-radius: 6px;">
-                </div>
-
-        </div>
-        <div>
-            <span>Bienvenido</span>
-            <a href="/api/usuarios/admin/dashboard" class="btn-logout">Volver</a>
-        </div>
-    </header>
+    <!--header.ejs-->
+    <%- include('./partials/header.ejs', {
+    subtitulo: "Inactivos",
+    textoLogout: "volver",
+    logoutHref: "/api/usuarios/admin/dashboard"
+    }) %>
 
     <main class="inactive-main">
         <h2>Productos</h2>

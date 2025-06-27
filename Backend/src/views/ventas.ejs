@@ -9,19 +9,13 @@
 </head>
 
 <body>
-    <header class="dashboard-header">
-        <div>
-            <h1>Tech Store</h1>
-            <h5>Ventas</h3>
-                <div>
-                    <img src="/img/logo.png" alt="Imagen" style="max-width: 70px; border-radius: 6px;">
-                </div>
+    <!--header.ejs-->
+    <%- include('./partials/header.ejs', {
+    subtitulo: "Ventas",
+    textoLogout: "volver",
+    logoutHref: "/api/usuarios/admin/dashboard"
+    }) %>
 
-        </div>
-        <div>
-            <a href="/api/usuarios/admin/dashboard" class="btn-logout">Volver</a>
-        </div>
-    </header>
     <div class="container mt-4">
         <h1 class="mb-4">Listado de Ventas</h1>
         <% if (ventas && ventas.length) { %>

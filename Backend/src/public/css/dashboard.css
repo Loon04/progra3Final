@@ -125,6 +125,10 @@ body {
     font-weight: 600;
 }
 
+.table-wrapper {
+    overflow-x: auto;
+}
+
 .dashboard-table {
     width: 100%;
     border-collapse: collapse;

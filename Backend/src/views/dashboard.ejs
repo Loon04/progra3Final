@@ -14,20 +14,12 @@
 </head>
 
 <body>
-    <header class="dashboard-header">
-        <div>
-            <h1>Tech Store</h1>
-            <h5>Panel de Administración</h3>
-                <div>
-                    <img src="/img/logo.png" alt="Imagen" style="max-width: 70px; border-radius: 6px;">
-                </div>
-
-        </div>
-        <div>
-            <span>Bienvenido</span>
-            <a href="/api/usuarios/admin/login" class="btn-logout">Cerrar sesión</a>
-        </div>
-    </header>
+    <!--header.ejs-->
+    <%- include('./partials/header.ejs', {
+    subtitulo: "Panel de Administración",
+    textoLogout: "Cerrar Sesion",
+    logoutHref: "/api/usuarios/admin/login"
+    }) %>
 
     <main class="dashboard-main">
         <section class="dashboard-actions">
@@ -38,6 +30,7 @@
 
         <section class="dashboard-list">
             <h2>Productos</h2>
+            <div class="table-wrapper">
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -158,6 +151,7 @@
                                             <% } %>
                 </tbody>
             </table>
+            </div>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
