@@ -134,7 +134,7 @@ function renderizarProductos(data) {
             const cantidad = enCarrito ? enCarrito.cantidad : 0;
 
             productDiv.innerHTML += `
-            <img src="${element.imagen}" class="card-img-top" alt="...">
+            <img src="http://localhost:5000/img/imgProductos/${element.imagen}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${element.nombre}</h5>
                 <p class="card-text">${element.descripcion}</p>
