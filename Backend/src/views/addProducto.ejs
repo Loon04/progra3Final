@@ -12,37 +12,99 @@
 <body>
     <div class="container-add-producto">
         <h2>Agregar nuevo producto</h2>
+
+
+
+
+
         <form action="/api/productos/admin/nuevo" method="POST" class="form-add-producto" enctype="multipart/form-data">
+
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre" value="<%= old ? old.nombre : '' %>">
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="nombre");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+                <input type="number" id="precio" name="precio" step="0.01" value="<%= old ? old.precio : '' %>">
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="precio");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <div class="form-group">
                 <label for="stock">Stock:</label>
-                <input type="number" id="stock" name="stock" min="0" required>
+                <input type="number" id="stock" name="stock" value="<%= old ? old.stock : '' %>">
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="stock");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <div class="form-group">
                 <label for="imagen">Imagen</label>
                 <input type="file" id="imagen" name="imagen" accept="image/*">
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="img");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <div class="form-group">
                 <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo" required>
+                <select id="tipo" name="tipo">
                     <option value="">Seleccionar tipo</option>
-                    <option value="Accesorio">Accesorio</option>
-                    <option value="Repuesto">Repuesto</option>
+                    <option value="Accesorio" <%=old && old.tipo==="Accesorio" ? "selected" : "" %>>Accesorio</option>
+                    <option value="Repuesto" <%=old && old.tipo==="Repuesto" ? "selected" : "" %>>Repuesto</option>
                 </select>
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="tipo");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+                <textarea id="descripcion" name="descripcion" rows="3"><%= old ? old.descripcion : '' %></textarea>
+                <% if (typeof errors !=="undefined" && errors.length> 0) { %>
+                    <% const errName=errors && errors.find(e=> e.type =="desc");
+                        if(errName){
+                        %>
+                        <p class="error" style="color: red;">
+                            <%= errName.errMessage %>
+                        </p>
+                        <% } %>
+                            <% } %>
             </div>
             <button type="submit" class="btn-agregar">Agregar producto</button>
+
         </form>
+
         <a href="/api/usuarios/admin/dashboard" class="btn-volver">Volver al dashboard</a>
     </div>
 </body>

@@ -31,20 +31,20 @@ export default {
         }
     },
     renderAddProduct: (req, res) => {
-        return res.status(200).render("addProducto");
+        return res.status(200).render("addProducto", { errors: [], old: {} });
     },
     renderEditProduct: async (req, res) => {
         let id = req.params.id;
         let producto = await productService.getById(id);
         producto.toJSON();
-        return res.status(200).render("editProducto", { producto });
+        return res.status(200).render("editProducto", { producto, errors: [], old: {} });
     },
     addProduct: async (req, res) => {
         let bodyProduct = req.body;
         try {
             if (req.file) bodyProduct.imagen = req.file.filename; //agrego el nombre de la imagen al body
             let productoCreado = await productService.createProduct(bodyProduct);
-            
+
             if (productoCreado) {
                 return res.status(200).redirect("/api/usuarios/admin/dashboard");
             } else {
