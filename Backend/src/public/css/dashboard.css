@@ -106,17 +106,48 @@ body {
     color: #2d3e50;
 }
 
-.btn-ventas {
-    background: #0e9610;
-}
-
-.btn-ventas:hover {
-    background: #24ce27;
-}
-
 .btn-warning:hover {
     background: #ffe98a;
     color: #1b4fa0;
+}
+
+.btn-ventas {
+    background: rgba(91, 86, 160, 0.996);
+}
+
+.btn-ventas:hover {
+    background: rgba(50, 47, 88, 0.996);
+    color: #fff;
+    
+}
+
+.btn-ventas:focus,
+.btn-ventas:active {
+    background: rgba(50, 47, 88, 0.996) !important;
+    color: #fff !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+
+.btn-inactivos {
+    background-color: rgba(230, 171, 71, 0.996);
+    color: #fff;
+}
+
+.btn-inactivos:hover {
+    background: rgba(238, 161, 28, 0.996);
+    color: #fff;
+}
+
+.btn-inactivos:focus,
+.btn-inactivos:active {
+    background: rgba(230, 171, 71, 0.996) !important;
+    color: #fff !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
 }
 
 .btn-danger {
@@ -128,14 +159,6 @@ body {
     background: #c0392b;
 }
 
-.btn-success {
-    background: #24ce27;
-    color: #fff;
-}
-
-.btn-success:hover {
-    background: #0e9610;
-}
 
 .dashboard-list h2 {
     margin-top: 0;

@@ -6,7 +6,7 @@ body {
 }
 
 .dashboard-header {
-    background: #2d6cdf;
+    background: rgba(238, 161, 28, 0.996);
     color: #fff;
     padding: 1.5rem 2rem;
     display: flex;
@@ -48,8 +48,8 @@ body {
 }
 
 .btn-logout {
-    color: #2d6cdf;
     background: #fff;
+    color: rgba(238, 161, 28, 0.996);
     padding: 8px 18px;
     border-radius: 5px;
     text-decoration: none;
@@ -58,8 +58,8 @@ body {
 }
 
 .btn-logout:hover {
-    background: #e3eefd;
-    color: #1b4fa0;
+    background: #fcfde3;
+    color: rgba(238, 161, 28, 0.996);
 }
 
 .inactive-main {
