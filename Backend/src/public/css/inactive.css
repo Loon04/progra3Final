@@ -12,6 +12,54 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+.dashboard-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    max-width: 70px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.dashboard-left h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.dashboard-left h5 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.btn-logout {
+    color: #2d6cdf;
+    background: #fff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background: #e3eefd;
+    color: #1b4fa0;
 }
 
 .inactive-main {
@@ -21,35 +69,6 @@ body {
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 24px rgba(44, 62, 80, 0.09);
-}
-
-.dashboard-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.dashboard-header div {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-}
-
-.dashboard-header .btn-logout {
-    background: #fff;
-    color: #2d6cdf;
-    border: none;
-    padding: 0.5rem 1.1rem;
-    border-radius: 6px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s, color 0.2s;
-    cursor: pointer;
-}
-
-.dashboard-header .btn-logout:hover {
-    background: #e3eefd;
-    color: #1b4fa0;
 }
 
 .btn {
@@ -75,24 +94,6 @@ body {
     font-size: 0.95rem;
 }
 
-.btn-warning {
-    background: #ffd83e;
-    color: #2d3e50;
-}
-
-.btn-warning:hover {
-    background: #ffe98a;
-    color: #1b4fa0;
-}
-
-.btn-danger {
-    background: #e74c3c;
-    color: #fff;
-}
-
-.btn-danger:hover {
-    background: #c0392b;
-}
 
 .btn-success {
     background: #24ce27;
@@ -103,10 +104,16 @@ body {
     background: #0e9610;
 }
 
+.inactive-main h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #2d3e50;
+    font-weight: 600;
+}
 .inactives-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-
+    gap: 1.5rem; 
+    padding: 1rem;
 }

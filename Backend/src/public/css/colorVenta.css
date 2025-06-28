@@ -1,5 +1,8 @@
 body {
     background-color: #f8f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
 }
 
 .dashboard-header {
@@ -9,22 +12,39 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; 
 }
 
-.dashboard-header h1 {
+@media (max-width: 600px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+.dashboard-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    max-width: 70px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.dashboard-left h1 {
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
 }
 
-.dashboard-header div {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-}
-
-.dashboard-header img {
-    margin-top: 10px;
+.dashboard-left h5 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .btn-logout {
@@ -37,23 +57,49 @@ body {
     cursor: pointer;
 }
 
-.dashboard-header .btn-logout:hover {
+.btn-logout:hover {
     background: #b52a37;
     color: #fff;
 }
 
-.table th,
-.table td {
-    vertical-align: middle !important;
+.ventas-list h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #212529;
+    font-weight: 600;
+}
+
+.ventas-list {
+    max-width: 1100px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 14px;
+    
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.ventas-list th,
+.ventas-list td {
+    padding: 0.85rem 1rem;
     text-align: center;
 }
 
-.table th {
-    background: #343a40 !important;
-    color: #fff !important;
+.ventas-list th {
+    background: rgba(44, 62, 80, 0.07);
+    color: #212529;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(44, 62, 80, 0.07);
 }
 
-.alert-info {
-    margin-top: 30px;
-    font-size: 1.1rem;
+.ventas-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
 }
