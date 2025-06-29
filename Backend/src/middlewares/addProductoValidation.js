@@ -1,6 +1,6 @@
 
 
-function validarAgregarProducto(req, res, next) {
+function validarAgregarProducto(req, res, next) { // creamos funcion middleware la cual valida los campos del form de agregar producto
     const { nombre, precio, stock, tipo, descripcion } = req.body;
     const errors = [];
     if (!nombre) errors.push({ errMessage: "Nombre es requerido", type: "nombre" });

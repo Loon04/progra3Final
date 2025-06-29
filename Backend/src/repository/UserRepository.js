@@ -16,7 +16,7 @@ export default {
 
         return userEncontrado || null;
     },
-    async registerAdmin(user) {
+    async registerAdmin(user) { // aca regsitramos un nuevo admin
         let username = user.username;
         let pass = user.password;
         const password = await bcrypt.hash(pass, 10);

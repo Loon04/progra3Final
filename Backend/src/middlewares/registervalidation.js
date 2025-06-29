@@ -1,5 +1,5 @@
 
-function validarRegister(req, res, next) {
+function validarRegister(req, res, next) {// Middleware, para validar el form del register
     const { username, password } = req.body;
     let errores = [];
 

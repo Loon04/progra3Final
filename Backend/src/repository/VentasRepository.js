@@ -1,7 +1,7 @@
 import { Venta } from "../models/relaciones.js";
 //
-export default {
-    async create({nombreUsuario, total})  {
+export default { // de esta manera creamos una venta 
+    async create({ nombreUsuario, total }) {
         try {
             const ventaCreado = await Venta.create({ //un solo obj 
                 nombreUsuario,

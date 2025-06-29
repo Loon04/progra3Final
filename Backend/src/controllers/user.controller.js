@@ -3,7 +3,7 @@ import userService from "../services/user.service.js"
 import productService from "../services/product.service.js"
 
 export default {
-    login: async (req, res) => {
+    login: async (req, res) => { // controler que hace el login 
 
         let user = {
             username: req.body.username,
@@ -27,7 +27,7 @@ export default {
         return res.status(200).render("dashboard", { productos });
 
     },
-    fastAcces: async (req, res) => {
+    fastAcces: async (req, res) => { // este es el endpoint que carga el acceso rapido
 
         const user = { username: "admin", password: "admin" }
 
@@ -52,7 +52,7 @@ export default {
         }
 
     },
-    renderRegister: async (req, res) => {
+    renderRegister: async (req, res) => { // render la vista register
         res.render("register", { error: null, errores: [] });
     }
 

@@ -39,7 +39,7 @@ const init = async () => {
     configuracionStatic(app);
     configuracionRouter(app);
     try {
-        await sequelize.sync({ alter: true })
+        await sequelize.sync()
         const PORT = 5000;
         app.listen(PORT, () => console.log(`servidor corriendo en : http://localhost:${PORT}`));
     } catch (error) {

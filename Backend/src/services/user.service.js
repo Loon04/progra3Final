@@ -1,6 +1,6 @@
 import UserRepo from "../repository/UserRepository.js";
 
-export default {
+export default { // servicio donde utilizamos diferentes funciones relacionadas con los usuarios
     getUserLogin: (req) => {
         return req.body;
     },

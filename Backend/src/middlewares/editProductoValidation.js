@@ -1,4 +1,4 @@
-function validarEditarProducto(req, res, next) {
+function validarEditarProducto(req, res, next) {// creamos funcion middleware para validar los campos del form de editar producto
     const { nombre, precio, stock, tipo, descripcion } = req.body;
     const errors = [];
     if (!nombre) errors.push({ errMessage: "Nombre es requerido", type: "nombre" });

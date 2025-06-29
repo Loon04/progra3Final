@@ -1,7 +1,7 @@
 
 
 
-function validarLogin(req, res, next) {
+function validarLogin(req, res, next) { // Middleware, para validar el form del login
 
     const { username, password } = req.body;
 
