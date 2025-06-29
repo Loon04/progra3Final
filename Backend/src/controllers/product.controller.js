@@ -85,6 +85,9 @@ export default {
         const { count, rows } = await productService.getPaginationProducts(page, pageTam);
 
         return res.status(200).json({ items: rows, totalItems: count, currentPage: page, totalPages: Math.ceil(count / pageTam) });
+    },
+    getActivos: async (req,res) => {
+        const productos = await productService.getActiveProducts()
+        return res.status(200).json(productos);
     }
-
 }

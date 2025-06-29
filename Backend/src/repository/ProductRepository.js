@@ -57,5 +57,9 @@ export default {
             limit,
             offset
         })
+    },
+    async getActivos() { //no es lo mismo que obtenerInactivos()
+        let productos = await Producto.findAll({ where: { activo: 1 } });
+        return productos.map(producto => producto.toJSON());
     }
 }

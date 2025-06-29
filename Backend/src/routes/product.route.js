@@ -18,5 +18,6 @@ productoRoutes.put("/admin/edit/:id", upload.single("imagen"), validarEditarProd
 productoRoutes.get("/admin/inactives", productController.renderInactives);
 productoRoutes.get("/all", productController.getAll);
 productoRoutes.get("/", productController.getPagination);
+productoRoutes.get("/activos", productController.getActivos);
 
 export default productoRoutes;
