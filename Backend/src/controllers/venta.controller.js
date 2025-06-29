@@ -41,14 +41,20 @@ export default {
 
   },
   renderVentas: async (req, res) => {
-    let ventas = (await Venta.findAll({
-      include: {
-        model: Producto,
-        through: { attributes: ['cantidad'] }
-      }
-    })).map(venta => venta.toJSON());
-    console.log(ventas[0].Productos);
-    res.render("ventas", { ventas });
+    try {
+      let ventas = (await Venta.findAll({
+        include: {
+          model: Producto,
+          through: { attributes: ['cantidad'] }
+        }
+      })).map(venta => venta.toJSON());
+      //console.log(ventas[0].Productos);
+      
+      return res.render("ventas", { ventas });
+    } catch (error) {
+      console.error("Error en el render:", error);
+      return res.status(500).json({mensaje: "Error en la base de datos."});
+    }
 
   },
   getAllVentas: async (req, res) => {

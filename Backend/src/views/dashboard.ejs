@@ -31,6 +31,7 @@
         <section class="dashboard-list">
             <h2>Productos</h2>
             <div class="table-wrapper">
+            <% if (productos && productos.length > 0 && productos.some(p => p.activo === 1)) { %>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -45,7 +46,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (productos && productos.length> 0) { %>
                         <% productos.forEach(producto=> { %>
                             <% if(producto.activo===1){ %>
 
@@ -141,16 +141,13 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <% } %>
-                                    <% }) %>
-                                        <% } else { %>
-                                            <tr>
-                                                <td colspan="5" style="text-align:center;">No hay productos cargados.
-                                                </td>
-                                            </tr>
-                                            <% } %>
+                            <% } %>
+                        <% }) %>
                 </tbody>
             </table>
+            <% } else { %>
+                <p class="alert alert-info" style="text-align:center; margin-top: 2rem;">No hay productos cargados o activos.</p>
+            <% } %>
             </div>
         </section>
     </main>

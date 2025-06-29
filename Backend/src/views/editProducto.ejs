@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="precio">Precio:</label>
                 <input type="number" id="precio" name="precio"
-                    value="<%= old && old.stock !== undefined ? old.stock : producto.stock %>">
+                    value="<%= old && old.precio !== undefined ? old.precio : producto.precio %>">
                 <% if (typeof errors !=="undefined" && errors.length> 0) { %>
                     <% const errName=errors && errors.find(e=> e.type =="precio");
                         if(errName){
