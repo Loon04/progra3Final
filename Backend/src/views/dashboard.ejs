@@ -15,145 +15,149 @@
 
 <body>
     <!--header.ejs-->
-    <%- include('./partials/header.ejs', {
-    subtitulo: "Panel de Administración",
-    textoLogout: "Cerrar Sesion",
-    logoutHref: "/api/usuarios/admin/login"
-    }) %>
+    <%- include('./partials/header.ejs', { subtitulo: "Panel de Administración" , textoLogout: "Cerrar Sesion" ,
+        logoutHref: "/api/usuarios/admin/login" }) %>
 
-    <main class="dashboard-main">
-        <section class="dashboard-actions">
-            <a href="/api/productos/admin/nuevo" class="btn btn-primary">Agregar producto</a>
-            <a href="/api/productos/admin/inactives" class="btn btn-inactivos">Inactivos</a>
-            <a href="/api/venta/panel" class="btn btn-ventas">Ventas</a>
-        </section>
+        <main class="dashboard-main">
+            <section class="dashboard-actions">
+                <a href="/api/productos/admin/nuevo" class="btn btn-primary">Agregar producto</a>
+                <a href="/api/productos/admin/inactives" class="btn btn-inactivos">Inactivos</a>
+                <a href="/api/venta/panel" class="btn btn-ventas">Ventas</a>
+            </section>
 
-        <section class="dashboard-list">
-            <h2>Productos</h2>
-            <div class="table-wrapper">
-            <% if (productos && productos.length > 0 && productos.some(p => p.activo === 1)) { %>
-            <table class="dashboard-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Tipo</th>
-                        <th>Imagen</th>
-                        <th>Acciones</th>
-                        <th>Activo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <% productos.forEach(producto=> { %>
-                            <% if(producto.activo===1){ %>
-
+            <section class="dashboard-list">
+                <h2>Productos</h2>
+                <div class="table-wrapper">
+                    <% if (productos && productos.length> 0 && productos.some(p => p.activo === 1)) { %>
+                        <table class="dashboard-table">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <%= producto.id %>
-                                    </td>
-                                    <td>
-                                        <%= producto.nombre %>
-                                    </td>
-                                    <td>$<%= producto.precio %>
-                                    </td>
-                                    <td>
-                                        <%= producto.stock %>
-                                    </td>
-                                    <td>
-                                        <%= producto.tipo %>
-                                    </td>
-                                    <td>
-                                        <div style="margin-top:8px;">
-                                            <img src="/img/imgProductos/<%= producto.imagen %>" alt="Imagen"
-                                                style="max-width: 120px; border-radius: 6px;">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"
-                                            class="btn btn-sm btn-warning">Editar</a>
-
-                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#modal-eliminar-<%= producto.id %>">
-                                            Eliminar
-                                        </button>
-
-                                        <div class="modal fade" id="modal-eliminar-<%= producto.id %>" tabindex="-1">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">¡Atención! No va a poder recuperar este
-                                                            producto si lo elimina</h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>¿Está seguro de que quiere eliminar este producto?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-sm btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
-
-                                                        <form
-                                                            action="/api/productos/admin/<%= producto.id %>?_method=DELETE"
-                                                            method="POST" style="display:inline;">
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-danger">Eliminar</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#modal-desactivar-<%= producto.id %>">
-                                            Desactivar
-                                        </button>
-
-                                        <div class="modal fade" id="modal-desactivar-<%= producto.id %>" tabindex="-1">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">¡Atención!</h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>¿Está seguro de que quiere desactivar este producto?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-sm btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
-
-                                                        <form
-                                                            action="/api/productos/admin/<%= producto.id %>?_method=PUT"
-                                                            method="POST" style="display:inline;">
-                                                            <button type="submit"
-                                                                class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
-                                                                <%= producto.activo ? 'Desactivar' : 'Activar' %>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Tipo</th>
+                                    <th>Imagen</th>
+                                    <th>Acciones</th>
+                                    <th>Activo</th>
                                 </tr>
+                            </thead>
+                            <tbody>
+                                <% productos.forEach(producto=> { %>
+                                    <% if(producto.activo===1){ %>
+
+                                        <tr>
+                                            <td>
+                                                <%= producto.id %>
+                                            </td>
+                                            <td>
+                                                <%= producto.nombre %>
+                                            </td>
+                                            <td>$<%= producto.precio %>
+                                            </td>
+                                            <td>
+                                                <%= producto.stock %>
+                                            </td>
+                                            <td>
+                                                <%= producto.tipo %>
+                                            </td>
+                                            <td>
+                                                <div style="margin-top:8px;">
+                                                    <img src="<%= producto.imagen %>" alt="Imagen"
+                                                        style="max-width: 120px; border-radius: 6px;">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="/api/productos/admin/edit/<%= producto.id %>" method="POST"
+                                                    class="btn btn-sm btn-warning">Editar</a>
+
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-eliminar-<%= producto.id %>">
+                                                    Eliminar
+                                                </button>
+
+                                                <div class="modal fade" id="modal-eliminar-<%= producto.id %>"
+                                                    tabindex="-1">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">¡Atención! No va a poder
+                                                                    recuperar este
+                                                                    producto si lo elimina</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>¿Está seguro de que quiere eliminar este producto?
+                                                                </p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-sm btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancelar</button>
+
+                                                                <form
+                                                                    action="/api/productos/admin/<%= producto.id %>?_method=DELETE"
+                                                                    method="POST" style="display:inline;">
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm btn-danger">Eliminar</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-desactivar-<%= producto.id %>">
+                                                    Desactivar
+                                                </button>
+
+                                                <div class="modal fade" id="modal-desactivar-<%= producto.id %>"
+                                                    tabindex="-1">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">¡Atención!</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>¿Está seguro de que quiere desactivar este producto?
+                                                                </p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-sm btn-secondary"
+                                                                    data-bs-dismiss="modal">Cancelar</button>
+
+                                                                <form
+                                                                    action="/api/productos/admin/<%= producto.id %>?_method=PUT"
+                                                                    method="POST" style="display:inline;">
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm <%= producto.activo ? 'btn-danger' : 'btn-success' %>">
+                                                                        <%= producto.activo ? 'Desactivar' : 'Activar'
+                                                                            %>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <% }) %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            <p class="alert alert-info" style="text-align:center; margin-top: 2rem;">No hay productos
+                                cargados o activos.</p>
                             <% } %>
-                        <% }) %>
-                </tbody>
-            </table>
-            <% } else { %>
-                <p class="alert alert-info" style="text-align:center; margin-top: 2rem;">No hay productos cargados o activos.</p>
-            <% } %>
-            </div>
-        </section>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-        crossorigin="anonymous"></script>
+                </div>
+            </section>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

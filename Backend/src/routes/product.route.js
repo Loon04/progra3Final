@@ -1,6 +1,6 @@
 import { Router } from "express";
 import productController from "../controllers/product.controller.js";
-import upload from "../middlewares/multerConfig.js";
+import upload from "../middlewares/multerCloudinary.js";
 import { validarAgregarProducto } from "../middlewares/addProductoValidation.js";
 import { validarEditarProducto } from "../middlewares/editProductoValidation.js";
 

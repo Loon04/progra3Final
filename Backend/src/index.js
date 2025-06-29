@@ -30,7 +30,6 @@ const configuracionMotorPlantillas = (app) => { // configuracion de motor de pla
     app.set("view engine", "ejs");
     app.set("views", join(__dirname, "views"));
 }
-
 const init = async () => {
     const app = express();
 

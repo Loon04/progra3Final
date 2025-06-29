@@ -3,7 +3,7 @@ import path from 'path'
 import fs from "fs"
 import { join, __dirname } from "../utils/utils.js"
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ // este multer es para guardar imagenes en el servidor localmente si quisieramos
     destination: (req, file, cb) => { //cb -> callback
         const uploadPath = join(__dirname, "public", "img", "imgProductos"); //(lo que pasa si da error,lo que devuelve si no hay error) 
         try {

@@ -42,7 +42,7 @@ export default {
     addProduct: async (req, res) => {
         let bodyProduct = req.body;
         try {
-            if (req.file) bodyProduct.imagen = req.file.filename; //agrego el nombre de la imagen al body
+            if (req.file) bodyProduct.imagen = req.file.path; //(usariamos req.file.filename si estuvieramos guardando localmente)agrego el nombre de la imagen al body
             let productoCreado = await productService.createProduct(bodyProduct);
 
             if (productoCreado) {
@@ -86,7 +86,7 @@ export default {
 
         return res.status(200).json({ items: rows, totalItems: count, currentPage: page, totalPages: Math.ceil(count / pageTam) });
     },
-    getActivos: async (req,res) => {
+    getActivos: async (req, res) => {
         const productos = await productService.getActiveProducts()
         return res.status(200).json(productos);
     }

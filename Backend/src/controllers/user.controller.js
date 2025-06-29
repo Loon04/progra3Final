@@ -29,7 +29,7 @@ export default {
     },
     fastAcces: async (req, res) => { // este es el endpoint que carga el acceso rapido
 
-        const user = { username: "admin", password: "admin" }
+        const user = { username: "administrador", password: "contra123" }
 
         return res.status(200).send(user);
 

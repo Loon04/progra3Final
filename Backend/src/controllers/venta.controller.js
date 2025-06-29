@@ -9,11 +9,11 @@ export default {
         const producto = await Producto.findByPk(item.id);
 
         if (producto.stock < item.cantidad) { //solo para el uso de prueba, se tiene que arreglar en el front
-          return res.status(400).json({mensaje: `Stock insuficiente para ${producto.nombre}`});
+          return res.status(400).json({ mensaje: `Stock insuficiente para ${producto.nombre}` });
         }
       }
 
-      const nuevaVenta = await Venta.create({ //pq
+      const nuevaVenta = await Venta.create({ //esta venta la creamos para poder agregar los productos asociados junto con la venta 
         nombreUsuario,
         total,
         fecha: new Date()
@@ -30,17 +30,17 @@ export default {
         // como estamos dentro del for hacemos este proceso por cada producto que este en el carrito..
 
 
-        await nuevaVenta.addProducto(producto, { through: { cantidad: item.cantidad } });
+        await nuevaVenta.addProducto(producto, { through: { cantidad: item.cantidad } }); // aca agregamos el producto asociado junto con la cantidad
 
       }
       return res.status(201).json({ mensaje: "Exito al crear venta", id_venta: nuevaVenta.id });
     } catch (error) {
       console.error("Error al crear venta:", error);
-      return res.status(500).json({mensaje: "Error en la base de datos."});
+      return res.status(500).json({ mensaje: "Error en la base de datos." });
     }
 
   },
-  renderVentas: async (req, res) => {
+  renderVentas: async (req, res) => { // render para las ventas
     try {
       let ventas = (await Venta.findAll({
         include: {
@@ -48,16 +48,15 @@ export default {
           through: { attributes: ['cantidad'] }
         }
       })).map(venta => venta.toJSON());
-      //console.log(ventas[0].Productos);
-      
+
       return res.render("ventas", { ventas });
     } catch (error) {
       console.error("Error en el render:", error);
-      return res.status(500).json({mensaje: "Error en la base de datos."});
+      return res.status(500).json({ mensaje: "Error en la base de datos." });
     }
 
   },
-  getAllVentas: async (req, res) => {
+  getAllVentas: async (req, res) => {// render para obtener ventas
     let ventas = (await Venta.findAll({
       include: {
         model: Producto,
