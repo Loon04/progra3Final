@@ -30,41 +30,68 @@ function renderizarProductosCarrito(carrito) {
 
         carrito.forEach(element => {
             const div = document.createElement("div");
-            const nombre = document.createElement("p");
-            const precio = document.createElement("p");
+            div.className = "card-producto";
 
+            const filaSuperior = document.createElement("div");
+            filaSuperior.className = "fila-superior";
+
+            const filaInferior = document.createElement("div");
+            filaInferior.className = "fila-inferior";
+
+            const nombre = document.createElement("p");
             nombre.innerText = element.nombre;
+            
+            const precio = document.createElement("p");
             precio.innerText = "$" + element.precio;
+
             const img = document.createElement("img");
             img.src = element.imagen;
             img.className = "imgCarrito";
 
+            //interaccion con el producto
+            const acciones = document.createElement("div");
+            acciones.className = "acciones-producto";
+
+            //Elemento cantidad
+            const cantidad = document.createElement("div");
+            cantidad.innerText = element.cantidad;
+
+            //Botón borrar del carrito
             const deleteBtn = document.createElement("button");
             deleteBtn.className = "delete-button-product  btn btn-danger";
             deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`
-            const cantidad = document.createElement("div");
-            cantidad.innerText = "cantidad: " + element.cantidad;
+
+            //Botón agregar cant productos
             const btnSumCantidad = document.createElement("button");
             btnSumCantidad.innerText = "+";
             btnSumCantidad.className = "btn btn-secondary m-2"
             btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito))
+
+            //Botón quitar cant productos
             const btnRestCantidad = document.createElement("button");
             btnRestCantidad.innerText = "-";
             btnRestCantidad.className = "btn btn-secondary m-2"
             btnRestCantidad.addEventListener("click", () => restarCantidad(element, carrito))
-            cantidad.appendChild(btnSumCantidad);
-            cantidad.appendChild(btnRestCantidad);
-            cantidad.appendChild(deleteBtn);
+
 
             suma += element.precio * element.cantidad;
+            
+            acciones.appendChild(precio)
+            acciones.appendChild(btnRestCantidad);
+            acciones.appendChild(cantidad);
+            acciones.appendChild(btnSumCantidad);
+            acciones.appendChild(deleteBtn);
 
-            div.appendChild(nombre);
-            div.appendChild(img);
-            div.appendChild(precio);
-            div.appendChild(cantidad);
+            filaSuperior.appendChild(img)
+            filaSuperior.appendChild(nombre)
+            
+            filaInferior.appendChild(acciones)
+
+            div.appendChild(filaSuperior)
+            div.appendChild(filaInferior)
 
             contenedorProductos.appendChild(div);
-
+            
             actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
         })
         totalPrice.innerText = "";

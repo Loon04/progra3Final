@@ -20,3 +20,65 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.card-producto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    gap: 1rem;
+    background-color: #f9f9f9;
+}
+
+
+.fila-superior {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+
+.fila-superior img {
+    width: 80px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    width: 70px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.fila-inferior {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-producto .acciones-producto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .card-producto {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .acciones-producto {
+        justify-content: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+}
