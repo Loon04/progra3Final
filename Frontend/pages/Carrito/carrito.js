@@ -33,7 +33,7 @@ function renderizarProductosCarrito(carrito) {
             div.className = "card-producto";
 
             //si el body tiene la clase dark en el cambiadorTema()
-            if (document.body.classList.contains("dark")) { 
+            if (document.body.classList.contains("dark")) {
                 div.classList.add("darkCardProducto");
             }
 
@@ -45,7 +45,7 @@ function renderizarProductosCarrito(carrito) {
 
             const nombre = document.createElement("div");
             nombre.innerText = element.nombre;
-            
+
             const precio = document.createElement("div");
             precio.innerText = "$" + element.precio;
 
@@ -70,7 +70,8 @@ function renderizarProductosCarrito(carrito) {
             const btnSumCantidad = document.createElement("button");
             btnSumCantidad.innerText = "+";
             btnSumCantidad.className = "btn btn-secondary m-2"
-            btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito))
+
+            btnSumCantidad.addEventListener("click", () => sumarCantidad(element, carrito, acciones))
 
             //Botón quitar cant productos
             const btnRestCantidad = document.createElement("button");
@@ -80,7 +81,7 @@ function renderizarProductosCarrito(carrito) {
 
 
             suma += element.precio * element.cantidad;
-            
+
             acciones.appendChild(precio)
             acciones.appendChild(btnRestCantidad);
             acciones.appendChild(cantidad);
@@ -89,14 +90,14 @@ function renderizarProductosCarrito(carrito) {
 
             filaSuperior.appendChild(img)
             filaSuperior.appendChild(nombre)
-            
+
             filaInferior.appendChild(acciones)
 
             div.appendChild(filaSuperior)
             div.appendChild(filaInferior)
 
             contenedorProductos.appendChild(div);
-            
+
             actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
 
         })
@@ -143,7 +144,9 @@ function actualizarCarritoBorrar(container, selector, producto, carrito) {
 }
 
 function sumarCantidad(producto, carrito) {
-    if (producto.cantidad < 5) producto.cantidad++; // Luego cambiamos depende el stock del admin
+    if (producto.cantidad < producto.stock) {
+        producto.cantidad++;
+    }
     save(carrito)
     renderizarProductosCarrito(carrito)
 }
@@ -183,7 +186,7 @@ function generarTicket(carrito, data) {
 
     const fechaActual = new Date().toLocaleDateString(); //dia/mes/año
     const horaActual = new Date().toLocaleTimeString([], { //24 horas
-    hour12: false
+        hour12: false
     });
 
     pdf.text(`Fecha ${fechaActual} - Hora ${horaActual}`, 10, 40)
@@ -216,7 +219,7 @@ function generarTicket(carrito, data) {
     //lo guarda en el SesionStorage esto para que si el usuario completa la compra se borre para que no
     //tenga problemas al generar otro ticket si sigue en la sesion
     //Lo voy a usar para pasarle al <iframe> en el src="" que seria la ruta en donde esta el pdf
-    const pdfBase64 = pdf.output('datauristring'); 
+    const pdfBase64 = pdf.output('datauristring');
     sessionStorage.setItem('ticketPDF', pdfBase64); //se guarda aca
     sessionStorage.setItem('nombre_PDF', idCompra);
 
@@ -293,7 +296,7 @@ function cambiadorTema() {
     const modal = document.getElementsByClassName("modal-content")[0];
     const sectionCart = document.getElementsByClassName("section-cart")[0];
     const cardsProducto = document.getElementsByClassName("card-producto");
-    
+
     const temaGuardado = localStorage.getItem("tema");
 
     if (temaGuardado === "true") {
@@ -305,7 +308,7 @@ function cambiadorTema() {
         sectionCart.classList.add("darkSectionCart");
 
         for (let card of cardsProducto) {
-        card.classList.add("darkCardProducto");
+            card.classList.add("darkCardProducto");
         }
         btnTema.innerHTML = `<i class="fa-solid fa-sun fa-lg"></i> Tema`;
     } else {
@@ -317,7 +320,7 @@ function cambiadorTema() {
         sectionCart.classList.remove("darkSectionCart");
 
         for (let card of cardsProducto) {
-        card.classList.remove("darkCardProducto");
+            card.classList.remove("darkCardProducto");
         }
         btnTema.innerHTML = `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
     }
@@ -334,7 +337,7 @@ function cambiadorTema() {
         sectionCart.classList.toggle("darkSectionCart");
 
         for (let card of cardsProducto) {
-        card.classList.toggle("darkCardProducto", darkMode);
+            card.classList.toggle("darkCardProducto", darkMode);
         }
         localStorage.setItem("tema", darkMode);
     });

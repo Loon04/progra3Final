@@ -13,12 +13,20 @@ async function ejecutarInicio() { // funcion principal que ejecuta las subFuncio
 }
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []; //aca esta el get del carrito para manejarlo global.
-
+let data = [];
 async function cargarProductos() { // esta funcion se encarga de recuperar los datos asyncronos.
 
     const request = await fetch("http://localhost:5000/api/productos/activos");
-    let data = await request.json();
+    data = await request.json();
     data = await data.map((el) => ({ ...el, cantidad: 0 })) // a los datos que vienen de prueba le agregamos el campo cantidad
+
+    carrito.forEach(itemCarrito => {// esto es para mantener actualizado el stock dependiendo lo que el usuario eligio
+        const producto = data.find(p => p.id == itemCarrito.id);
+        if (producto) {
+            producto.stock -= itemCarrito.cantidad;
+            if (producto.stock < 0) producto.stock = 0;
+        }
+    });
 
     funcionFiltro(data);// fucion que filtra los productos si se selecciona alguno.
 
@@ -37,26 +45,32 @@ function actualizarCarrito(container, selector, producto) {
         const funBoton = container.querySelector(selector);
         const elemento = carrito.find(el => el.id == producto.id);
         const spanCant = container.querySelector(".cant-span");
-        //si el producto ya estae en el carrito le sumamos la cantidad
-        if (elemento) {
-            elemento.cantidad++;
+        const productoOriginal = data.find(p => p.id == producto.id);
+
+        if (productoOriginal.stock > 0) {
+            if (elemento) {
+                elemento.cantidad++;
+            } else {
+                carrito.push({ ...producto, cantidad: 1 });
+            }
+            productoOriginal.stock--;
+
+            funBoton.classList.remove("btn-primary");
+            funBoton.classList.add("btn-success");
+            funBoton.innerText = "✔️ Agregado";
+
+            setTimeout(() => {
+                funBoton.innerText = "✅ Agregar mas";
+            }, 1000);
+
+            spanCant.innerText = `Cantidad : ${elemento ? elemento.cantidad : 1}`
         } else {
-            //si no lo agregamos al carrito con cantidad 1
-            carrito.push({ ...producto, cantidad: 1 })
+            spanCant.innerText = "sin stock";
+            funBoton.classList.remove("btn-success");
+            funBoton.classList.add("btn-danger");
+            funBoton.innerText = "Sin Stock";
         }
-        //aca definimos animaciones y elementos que se crean para que la ui 
-        //indique que el usuario esta operando el carrito
-        funBoton.classList.remove("btn-primary")
-        funBoton.classList.add("btn-success")
-        funBoton.innerText = "✔️ Agregado"
-        setTimeout(() => {
-            funBoton.innerText = "✅ Agregar mas"
-        }, 1500)
-        if (!elemento) {
-            spanCant.innerText = "Cantidad: 1";
-        } else {
-            spanCant.innerText = `Cantidad: ${elemento.cantidad}`
-        }
+
         cargarDataCarritoHeader();//esta funcion es para actualizar los datos en el header
         save()// save guarda el carrito en el local storage
     })
