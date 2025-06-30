@@ -307,7 +307,7 @@ function cambiadorTema() {
         body.classList.add("darkLinks");
         headerContainer.classList.add("darkHeader");
         footer.classList.add("darkFooter");
-        modal.classList.add("darkModal");
+        if (modal) modal.classList.add("darkModal");
         sectionCart.classList.add("darkSectionCart");
 
         for (let card of cardsProducto) {
@@ -319,7 +319,7 @@ function cambiadorTema() {
         body.classList.remove("darkLinks")
         headerContainer.classList.remove("darkHeader");
         footer.classList.remove("darkFooter");
-        modal.classList.remove("darkModal");
+        if (modal) modal.classList.remove("darkModal");
         sectionCart.classList.remove("darkSectionCart");
 
         for (let card of cardsProducto) {
@@ -336,7 +336,7 @@ function cambiadorTema() {
         body.classList.toggle("darkLinks");
         headerContainer.classList.toggle("darkHeader");
         footer.classList.toggle("darkFooter");
-        modal.classList.toggle("darkModal");
+        if (modal) modal.classList.toggle("darkModal");
         sectionCart.classList.toggle("darkSectionCart");
 
         for (let card of cardsProducto) {

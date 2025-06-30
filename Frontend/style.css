@@ -21,8 +21,8 @@ h1,
 h2,
 h3,
 h4{
-    text-wrap: balance;
     color: rgba(50, 47, 88, 0.996);
+    text-wrap: balance;
 }
 
 p {
@@ -101,9 +101,11 @@ a,
     align-items: center;
 }
 
+/*
 .filter-tittle {
     margin-top: 2rem;
 }
+*/
 
 .cardWidth {
     width: 400px;
@@ -191,11 +193,18 @@ a,
     border-color: #736b5e;
 }
 
-.dark h1,
-h2,
-h3 {
-    text-wrap: balance;
-    color: #E0E0E0;
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p {
+    color: #E0E0E0 !important;
+}
+
+
+body.dark p.card-text,
+body.dark p.precio-card{
+    color: black !important;
 }
 
 .darkModal {
@@ -221,6 +230,7 @@ h3 {
 
 .darkFilterSection {
     background-color: rgba(50, 47, 88, 0.996);
+    color: #E0E0E0;
 }
 
 
