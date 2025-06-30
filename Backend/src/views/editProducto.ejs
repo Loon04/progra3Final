@@ -12,7 +12,8 @@
 <body>
     <div class="container-add-producto">
         <h2>Editar producto</h2>
-        <form action="/api/productos/admin/edit/<%= producto.id %>?_method=PUT" method="POST" class="form-add-producto">
+        <form action="/api/productos/admin/edit/<%= producto.id %>?_method=PUT" method="POST" class="form-add-producto"
+            enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre"
@@ -69,7 +70,7 @@
                             <% } %>
                                 <% if (producto.imagen) { %>
                                     <div style="margin-top:8px;">
-                                        <img src="/img/imgProductos/<%= producto.imagen %>" alt="Imagen actual"
+                                        <img src="<%= producto.imagen %>" alt="Imagen actual"
                                             style="max-width: 120px; border-radius: 6px;">
                                     </div>
                                     <% } %>

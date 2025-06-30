@@ -1,6 +1,8 @@
-function validarEditarProducto(req, res, next) {// creamos funcion middleware para validar los campos del form de editar producto
+import productService from "../services/product.service.js";
+async function validarEditarProducto(req, res, next) {// creamos funcion middleware para validar los campos del form de editar producto
     const { nombre, precio, stock, tipo, descripcion } = req.body;
     const errors = [];
+    const producto = await productService.getById(req.params.id);
     if (!nombre) errors.push({ errMessage: "Nombre es requerido", type: "nombre" });
     else if (nombre.length < 3) errors.push({ errMessage: "El nombre debe tener al menos 3 caracteres", type: "title" });
 
@@ -15,10 +17,10 @@ function validarEditarProducto(req, res, next) {// creamos funcion middleware pa
     if (!descripcion) errors.push({ errMessage: "Descripcion es requerida", type: "desc" });
     else if (descripcion.length < 10) errors.push({ errMessage: "La descripción debe tener al menos 10 caracteres", type: "desc" });
 
-    if (!req.file) errors.push({ errMessage: "Imagen es requerida", type: "img" })
+    if (!req.file && !producto.imagen) errors.push({ errMessage: "Imagen es requerida", type: "img" })
 
     if (errors.length > 0) {
-        return res.status(400).render("addProducto", { errors, old: req.body });
+        return res.status(400).render("editProducto", { producto, errors, old: req.body });
     }
 
     next();

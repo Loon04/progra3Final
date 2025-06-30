@@ -59,6 +59,10 @@ export default {
         let bodyNewProduct = req.body;
         let id = req.params.id;
         try {
+            if (req.file) {
+                console.log(req.file.path);
+                bodyNewProduct.imagen = req.file.path;
+            }
             let productoModificado = await productService.updateProduct(id, bodyNewProduct);
             if (productoModificado) {
                 return res.status(200).redirect("/api/usuarios/admin/dashboard");
