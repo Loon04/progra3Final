@@ -158,7 +158,10 @@ function restarCantidad(producto, carrito) {
 
 function finalizarCompra(carrito) {
     const btnFinalizarCompra = document.querySelector('.finalizar-compra')
-    btnFinalizarCompra.addEventListener('click', async () => {
+    const cleanBtn = btnFinalizarCompra.cloneNode(true); // tenemos que hacer clear de los listeners para que no nos cargue todos los renders que hicimos con 
+    //los botones de agregar cantidades
+    btnFinalizarCompra.parentNode.replaceChild(cleanBtn, btnFinalizarCompra);
+    cleanBtn.addEventListener('click', async () => {
 
         await guardarInfoVenta(carrito)
     });
