@@ -35,6 +35,13 @@
 }
 
 
+.darkCardProducto {
+    background-color: rgba(50, 47, 88, 0.996);
+    border-color: rgb(34, 36, 39);
+    color: #E0E0E0;
+}
+
+
 .fila-superior {
     display: flex;
     align-items: center;

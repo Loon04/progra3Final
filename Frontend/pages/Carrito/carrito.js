@@ -4,9 +4,9 @@ function iniciarCarrito() {
     if (!usuariols) {
         window.location.href = "../../index.html"
     } else {
-        cambiadorTema();
         let carrito = getElemento('carrito')
         renderizarProductosCarrito(carrito);
+        cambiadorTema();
         salirSesion();
     }
 
@@ -32,16 +32,21 @@ function renderizarProductosCarrito(carrito) {
             const div = document.createElement("div");
             div.className = "card-producto";
 
+            //si el body tiene la clase dark en el cambiadorTema()
+            if (document.body.classList.contains("dark")) { 
+                div.classList.add("darkCardProducto");
+            }
+
             const filaSuperior = document.createElement("div");
             filaSuperior.className = "fila-superior";
 
             const filaInferior = document.createElement("div");
             filaInferior.className = "fila-inferior";
 
-            const nombre = document.createElement("p");
+            const nombre = document.createElement("div");
             nombre.innerText = element.nombre;
             
-            const precio = document.createElement("p");
+            const precio = document.createElement("div");
             precio.innerText = "$" + element.precio;
 
             const img = document.createElement("img");
@@ -93,6 +98,7 @@ function renderizarProductosCarrito(carrito) {
             contenedorProductos.appendChild(div);
             
             actualizarCarritoBorrar(div, '.delete-button-product', element, carrito)
+
         })
         totalPrice.innerText = "";
         totalPrice.innerText = "$" + suma.toFixed(2);
@@ -286,6 +292,8 @@ function cambiadorTema() {
     const footer = document.getElementsByTagName("footer")[0];
     const modal = document.getElementsByClassName("modal-content")[0];
     const sectionCart = document.getElementsByClassName("section-cart")[0];
+    const cardsProducto = document.getElementsByClassName("card-producto");
+    
     const temaGuardado = localStorage.getItem("tema");
 
     if (temaGuardado === "true") {
@@ -295,6 +303,10 @@ function cambiadorTema() {
         footer.classList.add("darkFooter");
         modal.classList.add("darkModal");
         sectionCart.classList.add("darkSectionCart");
+
+        for (let card of cardsProducto) {
+        card.classList.add("darkCardProducto");
+        }
         btnTema.innerHTML = `<i class="fa-solid fa-sun fa-lg"></i> Tema`;
     } else {
         body.classList.remove("dark");
@@ -303,6 +315,10 @@ function cambiadorTema() {
         footer.classList.remove("darkFooter");
         modal.classList.remove("darkModal");
         sectionCart.classList.remove("darkSectionCart");
+
+        for (let card of cardsProducto) {
+        card.classList.remove("darkCardProducto");
+        }
         btnTema.innerHTML = `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
     }
 
@@ -316,6 +332,10 @@ function cambiadorTema() {
         footer.classList.toggle("darkFooter");
         modal.classList.toggle("darkModal");
         sectionCart.classList.toggle("darkSectionCart");
+
+        for (let card of cardsProducto) {
+        card.classList.toggle("darkCardProducto", darkMode);
+        }
         localStorage.setItem("tema", darkMode);
     });
 }

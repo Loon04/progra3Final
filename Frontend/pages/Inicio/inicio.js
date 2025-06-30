@@ -197,6 +197,9 @@ function cambiadorTema() {
     const body = document.getElementsByTagName("body")[0];
     const headerContainer = document.getElementsByTagName("header")[0];
     const footer = document.getElementsByTagName("footer")[0];
+    const contenedorProductos = document.getElementsByClassName("product-container")[0];
+    const seccionFiltro = document.getElementsByClassName("filter-section")[0];
+
     //preguntamos al localStorage el tema
     const temaGuardado = localStorage.getItem("tema");
 
@@ -207,6 +210,8 @@ function cambiadorTema() {
         body.classList.add("darkLinks");
         headerContainer.classList.add("darkHeader");
         footer.classList.add("darkFooter");
+        contenedorProductos.classList.add("darkContenedorProductos");
+        seccionFiltro.classList.add("darkFilterSection");
         btnTema.innerHTML = `<i class="fa-solid fa-sun fa-lg"></i> Tema`;
     } else {
         //si no se quitan
@@ -214,6 +219,8 @@ function cambiadorTema() {
         body.classList.remove("darkLinks")
         headerContainer.classList.remove("darkHeader");
         footer.classList.remove("darkFooter");
+        contenedorProductos.classList.remove("darkContenedorProductos");
+        seccionFiltro.classList.remove("darkContenedorProductos")
         btnTema.innerHTML = `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
     }
     //y el click hace toggle a las clases 
@@ -222,12 +229,16 @@ function cambiadorTema() {
         btnTema.innerHTML = darkMode
             ? `<i class="fa-solid fa-sun fa-lg"></i> Tema`
             : `<i class="fa-solid fa-moon fa-lg"></i> Tema`;
+
         body.classList.toggle("darkLinks");
         headerContainer.classList.toggle("darkHeader");
         footer.classList.toggle("darkFooter");
+        contenedorProductos.classList.toggle("darkContenedorProductos");
+        seccionFiltro.classList.toggle("darkFilterSection");
         localStorage.setItem("tema", darkMode);
     });
-}
+};
+
 //esta funcion carga el carrito en el header
 function cargarDataCarritoHeader() {
     //seleccionamos el contenedor del icono

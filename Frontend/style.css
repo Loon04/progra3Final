@@ -20,8 +20,9 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4{
     text-wrap: balance;
+    color: rgba(50, 47, 88, 0.996);
 }
 
 p {
@@ -32,7 +33,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #acbfd1;
+    background-color: rgba(238, 161, 28, 0.996);
     border: 10px solid white;
     border-radius: 15px;
 }
@@ -109,7 +110,7 @@ a,
 }
 
 .product-container {
-    background-color: #EDA01D;
+    background-color: rgba(238, 161, 29, 0.996);
     border-radius: 1rem;
     margin-top: 2rem;
 }
@@ -185,14 +186,16 @@ a,
 }
 
 .dark {
-    background-color: #181a1b;
-    color: #e8e6e3;
+    background-color: black;
     -webkit-tap-highlight-color: transparent;
     border-color: #736b5e;
 }
 
-.darkLinks a {
-    color: #7BBEFE;
+.dark h1,
+h2,
+h3 {
+    text-wrap: balance;
+    color: #E0E0E0;
 }
 
 .darkModal {
@@ -203,13 +206,23 @@ a,
 
 .modal-header,
 .modal-footer {
-    border-color: rgb(122, 118, 118) !important;
+    border-color: rgb(53, 55, 58) !important;
 }
 
 .darkSectionCart, .darkFooter, .darkHeader {
-    background-color: #2e4153;
-    border-color: #303436 !important;
+    background-color: rgb(34, 36, 39);
+    border-color: black !important;
+    color: #E0E0E0;
 }
+
+.darkContenedorProductos {
+    background-color: rgba(50, 47, 88, 0.996);
+}
+
+.darkFilterSection {
+    background-color: rgba(50, 47, 88, 0.996);
+}
+
 
 .price-cont {
     width: 5.5rem;
