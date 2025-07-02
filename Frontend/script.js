@@ -22,7 +22,7 @@ function obtenerUsuarioYcargar() { // funcion principal del index donde iniciali
 
 async function loadAdminSystem() {
 
-    window.location.href = "http://localhost:5000/api/usuarios/admin/login";
+    window.location.href = "https://progra3final.onrender.com/usuarios/admin/login";
 
 }
 
