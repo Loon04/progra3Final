@@ -39,7 +39,7 @@ const init = async () => {
     configuracionRouter(app);
     try {
         await sequelize.sync()
-        const PORT = 5000;
+        const PORT = process.env.PORT || 5000;
         app.listen(PORT, () => console.log(`servidor corriendo en : http://localhost:${PORT}`));
     } catch (error) {
         console.log("Error al sincronizar la bd", error);
