@@ -41,7 +41,7 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
 
 ---
 
-## 🔗 Cómo iniciar el proyecto
+## 🔗 Cómo iniciar el proyecto (En local)
 
 1. **Clonar el repositorio:**
    ```bash
@@ -50,7 +50,7 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    ```
    - Abrir archivo index.html con live Server O Utilizar deploy de vercel -> link a la derecha 
 --- 
-## ( Servidor todavia en desarrollo ).
+## Servidor Node + express -> .
 
 2. **Instalar dependencias:**
    ```bash
@@ -58,7 +58,7 @@ Toda esta lógica funciona desde el cliente (CSR) consumiendo la API del backend
    npm install
    ```
    Importar base de datos en XAMP y agregar sus credenciales en el archivo `src/database/dbConfig.js`.
-
+   o conectar la bd de preferencia configurando tus variables de entorno..
 
 
 3. **Iniciar el servidor:**
