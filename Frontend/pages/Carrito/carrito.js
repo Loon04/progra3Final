@@ -256,7 +256,7 @@ async function guardarInfoVenta(carrito) {
             total: total
         };
 
-        const res = await fetch("http://localhost:5000/api/venta", {
+        const res = await fetch("https://progra3final.onrender.com/api/venta", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload) //no llegaba a cargar el json

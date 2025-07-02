@@ -16,7 +16,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || []; //aca esta el g
 let data = [];
 async function cargarProductos() { // esta funcion se encarga de recuperar los datos asyncronos.
 
-    const request = await fetch("http://localhost:5000/api/productos/activos");
+    const request = await fetch("https://progra3final.onrender.com/api/productos/activos");
     data = await request.json();
     data = await data.map((el) => ({ ...el, cantidad: 0 })) // a los datos que vienen de prueba le agregamos el campo cantidad
 
