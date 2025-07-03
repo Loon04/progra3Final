@@ -177,7 +177,7 @@ function funcionFiltro(data) {
     let dataAccesorios = [];
     let dataRepuestos = [];
     //definimos cantidad de elementos a renderizar para usar el paginador
-    const renderProduct = 3;
+    const renderProduct = 10;
 
     //llamamos a la funcion que renderiza productos( por primera vez al iniciar la pagina)
     renderizarProductos(data.slice(0, renderProduct));

@@ -208,14 +208,14 @@ body.dark p.precio-card{
 }
 
 .darkModal {
-    background-color: #2e4153;
-    border-color: rgb(122, 118, 118) !important;
-    color: #e8e6e3;
+    background-color: rgb(34, 36, 39);
+    border-color: black !important;
+    color: #E0E0E0;
 }
 
 .modal-header,
 .modal-footer {
-    border-color: rgb(53, 55, 58) !important;
+    border-color: black !important;
 }
 
 .darkSectionCart, .darkFooter, .darkHeader {
